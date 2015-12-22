@@ -38,6 +38,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
+    angular-ui-router-rails (0.2.15)
     angular_rails_csrf (1.0.4)
       rails (>= 3, < 5)
     angularjs-rails (1.4.8)
@@ -105,6 +106,7 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.3)
     jwt (1.5.2)
+    libv8 (3.16.14.13)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -175,6 +177,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     rdoc (4.2.0)
+    ref (2.0.0)
     responders (2.1.1)
       railties (>= 4.2.0, < 5.1)
     rspec-core (3.4.1)
@@ -218,6 +221,9 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    therubyracer (0.12.2)
+      libv8 (~> 3.16.14.0)
+      ref
     thin (1.6.4)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -239,6 +245,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  angular-ui-router-rails
   angular_rails_csrf
   angularjs-rails
   bootstrap-sass (~> 3.3.6)
@@ -260,6 +267,7 @@ DEPENDENCIES
   shoulda-matchers (~> 3.0.1)
   site_prism (~> 2.8)
   spring
+  therubyracer
   thin (~> 1.6.4)
   uglifier (>= 1.3.0)
 
