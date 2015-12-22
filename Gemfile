@@ -30,6 +30,9 @@ gem 'angular_rails_csrf'
 # Authentication
 gem 'devise'
 gem 'omniauth-facebook'
+source "https://rails-assets.org" do
+  gem "rails-assets-angular-devise"
+end
 
 group :development, :test do
   gem 'thin', '~> 1.6.4'
