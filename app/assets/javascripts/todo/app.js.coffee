@@ -1,15 +1,6 @@
-app = angular.module('Todo', [
-    'ui.router'
-])
+angular.module 'Todo', ['ui.router','templates']
 
-app.config(
-  ($stateProvider, $urlRouterProvider) ->
+angular.module 'Todo'
+  .config ($stateProvider, $urlRouterProvider) ->
     $urlRouterProvider.otherwise("/")
-
-    $stateProvider
-      .state('index', {
-        url: '/',
-        controller: 'TestCtrl',
-        templateUrl: 'index.html'
-      })
-  )
+  

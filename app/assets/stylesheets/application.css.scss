@@ -14,6 +14,136 @@
  *= require_self
  */
 
-html {
-  background: asset-url('bg.png') repeat-x 0 0;
+@import "bootstrap-sprockets";
+@import "bootstrap-custom";
+
+$main-color-dark: #294c7f;
+$main-color-light: #9dc5ff;
+$bg-color-dark: #83a4d4;
+$bg-color-light: #dbeaff;
+
+body {
+  background: $bg-color-dark;
+  background: gradient(linear, left top, left bottom, from($bg-color-dark), to($bg-color-light)) fixed;
+  background: -webkit-gradient(linear, left top, left bottom, from($bg-color-dark), to($bg-color-light)) fixed;
+}
+
+#menu {
+  background-color: $main-color-dark;
+  
+  .navbar-brand{
+    color: $main-color-light;
+  }
+  .navbar {
+    margin-bottom: 0px;
+
+    ul li a {
+      color: $main-color-light;
+
+      &:hover, &:focus {
+        color: $main-color-dark;
+      background-color: $main-color-light;  
+      }
+    }
+  }
+}
+
+#main_container {
+  margin-top: 20px;
+
+  .panel-custom {
+    border-color: $main-color-dark;
+
+    .panel-heading {
+      background-color: $main-color-dark;
+      border-radius: 0px;
+      color: $main-color-light;
+
+      .panel-icons {
+        margin-right: 5px;
+        margin-left: 5px;
+        cursor: pointer;
+      }
+    }
+
+    .panel-footer {
+      color: $main-color-dark;
+      background-color: $main-color-light;
+    }
+  }
+
+  .btn-custom {
+    background-color:$main-color-dark;
+    color: $main-color-light;
+  }
+
+  .tasks {
+    padding: 0;
+
+    .status, .order, .edit, .remove, .add, .date {
+      width: 40px;
+      table-layout: fixed;
+      text-align: center;
+
+      span {
+        cursor: pointer;
+      }
+    }
+
+    .sign {
+      width: 40px;
+      table-layout: fixed;
+      text-align: center;
+    }
+
+    table {
+      margin-bottom: 0px;
+    }
+
+    .task-form td {
+      vertical-align: middle;
+    }
+
+    .comments {
+      margin-top: 8px;
+
+      .comment {
+        margin-bottom: 5px;
+
+        .comment-body{
+          margin-bottom: 10px;
+        }
+
+        .comment-files ul {
+          margin-bottom: 0px;
+          list-style-type: none;
+          padding-left: 10px;
+
+          .comment-file {
+            font-size: 12px;
+          }
+        }
+      }
+
+      .comment-form {
+        textarea {
+          resize: none;
+        }
+
+        .attached-files ul {
+          margin-bottom: 0px;
+          list-style-type: none;
+          padding-left: 10px;
+
+          .attached-file {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+
+  .input-group, .panel-custom, .input-group-btn, .btn, .alert, .form-control {
+    border-radius: 0px;
+  }
 }

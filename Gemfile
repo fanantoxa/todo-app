@@ -10,11 +10,17 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'therubyracer', platforms: :ruby
+gem 'sprockets', '2.12.3'
 
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'angularjs-rails'
+gem 'angular-rails-templates'
 gem 'angular-ui-router-rails'
+
+source "https://rails-assets.org" do
+  gem "rails-assets-angular-devise"
+end
 
 # Protection
 gem 'angular_rails_csrf'
@@ -22,9 +28,6 @@ gem 'angular_rails_csrf'
 # Authentication
 gem 'devise'
 gem 'omniauth-facebook'
-source "https://rails-assets.org" do
-  gem "rails-assets-angular-devise"
-end
 
 group :development, :test do
   gem 'thin', '~> 1.6.4'
@@ -35,6 +38,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "better_errors"
   gem 'capybara-rails'
   gem 'site_prism', '~> 2.8'
   gem 'database_cleaner', '~> 1.5.1'
