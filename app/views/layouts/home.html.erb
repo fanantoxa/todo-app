@@ -9,16 +9,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div id="menu" class="container-fluid">
+<div id="menu" class="container-fluid" ng-controller="MenuCtrl">
   <nav class="navbar">
     <span class="navbar-brand" href="#">
       <span class="glyphicon glyphicon-list" aria-hidden="true"></span> 
-      Todo App
+      Todo App {{olaola}}
     </span>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#">About</a></li>
-      <li>
-        <a href="#">
+      <li ng-show="logged_in">
+        <a ng-click="logout()">
           <span class="glyphicon glyphicon-log-out"></span> Logout
         </a>
       </li>
