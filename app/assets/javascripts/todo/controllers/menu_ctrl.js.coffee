@@ -1,5 +1,5 @@
-angular.module "Todo"
-  .controller "MenuCtrl", ($scope, $location, $rootScope, Auth) ->
+class MenuCtrl
+  constructor: ($scope, $location, $rootScope, Auth) ->
     $rootScope.$on 'devise:login', (event, args) -> checkLogin()
     $rootScope.$on 'devise:logout', (event, args) -> checkLogin()
 
@@ -12,3 +12,6 @@ angular.module "Todo"
 
     checkLogin = ->
       $scope.logged_in = Auth.isAuthenticated()
+
+angular.module "Todo"
+  .controller "MenuCtrl", ['$scope', '$location', '$rootScope', 'Auth', MenuCtrl]

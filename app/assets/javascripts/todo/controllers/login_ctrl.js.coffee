@@ -1,5 +1,5 @@
-angular.module 'Todo'
-  .controller 'LoginCtrl', ($scope, $location, Auth) ->
+class LoginCtrl
+  constructor: ($scope, $location, Auth) ->
     $location.path '/' if Auth.isAuthenticated()
     
     $scope.credentials = {
@@ -16,3 +16,6 @@ angular.module 'Todo'
         $location.path '/'
       , (error) ->
         $scope.error = true
+
+angular.module 'Todo'
+  .controller 'LoginCtrl', [ '$scope', '$location', 'Auth', LoginCtrl]
