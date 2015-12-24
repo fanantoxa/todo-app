@@ -1,10 +1,5 @@
-angular.module 'Todo', ['ui.router','templates','Devise']
-
-angular.module 'Todo'
-  .run (Auth) ->  Auth.currentUser()
-
-angular.module 'Todo'
-  .config ($stateProvider, $urlRouterProvider, $httpProvider) ->
+class TodoConfig 
+  constructor: ($stateProvider, $urlRouterProvider, $httpProvider) ->
     $urlRouterProvider.otherwise("/")
 
     $httpProvider.defaults.withCredentials = true
@@ -22,3 +17,11 @@ angular.module 'Todo'
         url: '/registration'
         controller:  'RegistrationCtrl'
         templateUrl: 'auth/registration.html'  
+
+angular.module 'Todo', ['ui.router','templates','Devise']
+
+angular.module 'Todo'
+  .run ['Auth', (Auth) ->  Auth.currentUser()]
+
+angular.module 'Todo'
+  .config ['$stateProvider', '$urlRouterProvider', '$httpProvider', TodoConfig ]  
