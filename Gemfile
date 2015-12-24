@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.5'
 gem 'pg', '~> 0.15'
+gem 'rails_12factor', group: :production
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -28,6 +29,7 @@ gem 'angular_rails_csrf'
 # Authentication
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'puma'
 
 group :development, :test do
   gem 'thin', '~> 1.6.4'

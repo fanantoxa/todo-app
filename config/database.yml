@@ -70,6 +70,8 @@ test:
 #
 production:
   <<: *default
-  database: todo_app_production
-  username: todo_app
+  database: d4ftu26c6s65h2
+  username: ysbbjwkxnhenyo
   password: <%= ENV['TODO-APP_DATABASE_PASSWORD'] %>
+  host: ec2-54-217-202-109.eu-west-1.compute.amazonaws.com
+  port: 5432
