@@ -19,7 +19,7 @@ add tasks to my project
 
 * It should be a WEB application
 * For the client side must be used: HTML5, CSS3, Twitter Bootstrap, JavaScript, AngularJS, jQuery.
-*mar For server side Ruby on Rails.
+* For server side Ruby on Rails.
 * It should have client side and server side validation.
 * It should look like on screens (see attached file ‘rg_test_task_grid.png’).
 * It should work like one page WEB application and should use AJAX technology, load and submit data without reloading a page.
