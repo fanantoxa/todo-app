@@ -19,5 +19,10 @@ angular.module 'Todo'
       Auth.register($scope.credentials, config).then (registeredUser) ->
         $location.path '/'
       , (response) ->
-        console.log response.data.errors
-        $scope.errors = angular.forEach response.data.errors, (value, key, obj) ->  obj[key] = value.join(' and ')
+        $scope.errors = parseErrors(response.data.errors)
+
+    parseErrors = (errors) ->
+      parsedErrors = {}
+      angular.forEach errors,
+        (value, key) ->  parsedErrors[key] = value.join(' and ')
+      parsedErrors

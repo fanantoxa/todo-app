@@ -26,6 +26,7 @@ body {
   background: $bg-color-dark;
   background: gradient(linear, left top, left bottom, from($bg-color-dark), to($bg-color-light)) fixed;
   background: -webkit-gradient(linear, left top, left bottom, from($bg-color-dark), to($bg-color-light)) fixed;
+  min-width: 320px;
 }
 
 #menu {
@@ -37,12 +38,16 @@ body {
   .navbar {
     margin-bottom: 0px;
 
-    ul li a {
-      color: $main-color-light;
+    ul li {
+      float: left;
 
-      &:hover, &:focus {
-        color: $main-color-dark;
-      background-color: $main-color-light;  
+      a {
+        color: $main-color-light;
+
+        &:hover, &:focus {
+          color: $main-color-dark;
+          background-color: $main-color-light;  
+        }
       }
     }
 
