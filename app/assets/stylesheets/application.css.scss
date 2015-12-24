@@ -45,6 +45,11 @@ body {
       background-color: $main-color-light;  
       }
     }
+
+    .navbar-right {
+      float: right !important;
+      margin-right: -15px;
+    }
   }
 }
 
@@ -145,5 +150,17 @@ body {
 
   .input-group, .panel-custom, .input-group-btn, .btn, .alert, .form-control {
     border-radius: 0px;
+  }
+
+  .errors {
+    color: #DC4747;
+
+    &.errors-small {
+      font-size: 12px;
+    }
+
+    &.errors-right {
+      text-align: right;
+    }
   }
 }

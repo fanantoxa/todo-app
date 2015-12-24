@@ -7,11 +7,12 @@ angular.module 'Todo'
       password: ''
     }
 
+    $scope.error = false
+
     $scope.login = ->
       config = { headers: { 'X-HTTP-Method-Override': 'POST' } }
 
       Auth.login($scope.credentials, config).then (user) ->
         $location.path '/'
       , (error) ->
-        console.log "fails"
-        console.log error
+        $scope.error = true
