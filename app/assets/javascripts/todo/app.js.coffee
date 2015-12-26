@@ -5,8 +5,12 @@ class TodoConfig
     $httpProvider.defaults.withCredentials = true
 
     $stateProvider
-      .state 'project',
+      .state 'index',
         url: '/'
+        controller: 'AppCtrl'
+        templateUrl: 'index.html'
+      .state 'projects',
+        url: '/projects'
         controller: 'ProjectCtrl'
         templateUrl: 'project/main.html'
       .state 'login',
@@ -19,9 +23,6 @@ class TodoConfig
         templateUrl: 'auth/registration.html'  
 
 angular.module 'Todo', ['ui.router','templates','Devise']
-
-angular.module 'Todo'
-  .run ['Auth', (Auth) ->  Auth.currentUser()]
 
 angular.module 'Todo'
   .config ['$stateProvider', '$urlRouterProvider', '$httpProvider', TodoConfig ]  

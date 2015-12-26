@@ -25,18 +25,21 @@ $bg-color-light: #dbeaff;
 html {
   height: 100%;
 }
+
 body {
   background: $bg-color-dark;
   background: linear-gradient($bg-color-dark, $bg-color-light)  fixed;
   background: -webkit-linear-gradient($bg-color-dark, $bg-color-light)  fixed;
+}
 
-  // background: gradient(linear, left top, left bottom, from($bg-color-dark), to($bg-color-light)) fixed;
-  // background: -webkit-gradient(linear, left top, left bottom, from($bg-color-dark), to($bg-color-light)) fixed;
-  // min-width: 320px;
-  // background-image:
-  //   linear-gradient(
-  //     red, #f06d06
-  //   );
+#welcome {
+  h1, h3, h4 {
+    text-align: center;
+  }
+
+  h3 {
+    text-transform: uppercase;
+  }
 }
 
 #menu {
@@ -64,6 +67,10 @@ body {
     .navbar-right {
       float: right !important;
       margin-right: -15px;
+    }
+
+    .logout a{
+      cursor: pointer;
     }
   }
 }

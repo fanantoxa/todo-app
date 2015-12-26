@@ -1,6 +1,6 @@
 class LoginCtrl
   constructor: ($scope, $location, Auth) ->
-    $location.path '/' if Auth.isAuthenticated()
+    $location.path '/projects' if Auth.isAuthenticated()
     
     $scope.credentials = {
       email: '',

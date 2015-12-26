@@ -1,7 +1,11 @@
 class MenuCtrl
   constructor: ($scope, $location, $rootScope, Auth) ->
-    $rootScope.$on 'devise:login', (event, args) -> checkLogin()
-    $rootScope.$on 'devise:logout', (event, args) -> checkLogin()
+    checkLogin = ->
+      $scope.logged_in = Auth.isAuthenticated()
+
+    checkLogin()
+    angular.forEach ['devise:login','devise:logout','devise:new-registration'], 
+      (value) -> $scope.$on value, -> checkLogin()
 
     $scope.logout = ->
       config = { headers: { 'X-HTTP-Method-Override': 'DELETE' }}
@@ -9,9 +13,6 @@ class MenuCtrl
         $location.path '/login'
       , (error) ->
         $location.path '/'
-
-    checkLogin = ->
-      $scope.logged_in = Auth.isAuthenticated()
 
 angular.module "Todo"
   .controller "MenuCtrl", ['$scope', '$location', '$rootScope', 'Auth', MenuCtrl]
