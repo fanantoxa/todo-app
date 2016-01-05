@@ -1,6 +1,6 @@
 class ProjectCtrl
-  constructor: ($scope, $location, Auth) ->
-    $location.path '/' unless Auth.isAuthenticated()
+  constructor: (@$scope, @$location, @Auth) ->
+    @$location.path '/' unless @Auth.isAuthenticated()
 
     console.log "test"
 

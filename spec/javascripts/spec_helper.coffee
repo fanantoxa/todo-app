@@ -13,7 +13,6 @@ beforeEach ->
   @isAuthenticated = true
   @currentUser = { name: 'test user' }
   currentUser =  then: (resolve, reject) =>
-    console.log @currentUser
     if @currentUser then resolve() else reject() 
   @Auth = jasmine.createSpyObj('Auth', [
     'isAuthenticated',

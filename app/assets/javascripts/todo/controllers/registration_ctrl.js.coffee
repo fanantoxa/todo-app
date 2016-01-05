@@ -1,25 +1,27 @@
 class RegistrationCtrl
-  constructor: ($scope, $location, Auth) ->
-    $location.path '/projects' if Auth.isAuthenticated()
+  constructor: (@$scope, @$location, @Auth) ->
+    @$location.path '/projects' if @Auth.isAuthenticated()
     
-    $scope.credentials = {
+    @$scope.credentials = {
       email: '',
       password: '',
       password_confirmation: ''
     }
 
-    $scope.errors = {
+    @$scope.errors = {
       email: '',
       password: '',
       password_confirmation: ''
     }
 
-    $scope.register = =>
-      config = { headers: { 'X-HTTP-Method-Override': 'POST' } }
-      Auth.register($scope.credentials, config).then (registeredUser) ->
-        $location.path '/'
-      , (response) =>
-        $scope.errors = this.parseErrors(response.data.errors)
+    @$scope.register = this.register
+
+  register: =>
+    config = { headers: { 'X-HTTP-Method-Override': 'POST' } }
+    @Auth.register(@$scope.credentials, config).then (registeredUser) =>
+      @$location.path '/'
+    , (response) =>
+      @$scope.errors = this.parseErrors(response.data.errors)
 
   parseErrors: (errors) ->
     parsedErrors = {}

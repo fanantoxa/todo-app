@@ -1,21 +1,23 @@
 class LoginCtrl
-  constructor: ($scope, $location, Auth) ->
-    $location.path '/projects' if Auth.isAuthenticated()
+  constructor: (@$scope, @$location, @Auth) ->
+    @$location.path '/projects' if @Auth.isAuthenticated()
     
-    $scope.credentials = {
+    @$scope.credentials = {
       email: '',
       password: ''
     }
 
-    $scope.error = false
+    @$scope.error = false
 
-    $scope.login = ->
-      config = { headers: { 'X-HTTP-Method-Override': 'POST' } }
+    @$scope.login = this.login
 
-      Auth.login($scope.credentials, config).then (user) ->
-        $location.path '/'
-      , (error) ->
-        $scope.error = true
+  login: =>
+    config = { headers: { 'X-HTTP-Method-Override': 'POST' } }
+
+    @Auth.login(@$scope.credentials, config).then (user) =>
+      @$location.path '/'
+    , (error) =>
+      @$scope.error = true
 
 angular.module 'Todo'
   .controller 'LoginCtrl', [ '$scope', '$location', 'Auth', LoginCtrl]
