@@ -5,7 +5,7 @@ class MenuCtrl
 
     checkLogin()
     angular.forEach ['devise:login','devise:logout','devise:new-registration'], 
-      (value) -> $scope.$on value, -> checkLogin()
+      (value) -> $rootScope.$on value, -> checkLogin()
 
     $scope.logout = ->
       config = { headers: { 'X-HTTP-Method-Override': 'DELETE' }}

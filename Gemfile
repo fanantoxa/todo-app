@@ -37,11 +37,12 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.0'
+  gem 'jasmine-rails'
   gem 'spring'
 end
 
 group :development do
-  gem "better_errors"
+  gem 'better_errors'
   gem 'capybara-rails'
   gem 'site_prism', '~> 2.8'
   gem 'database_cleaner', '~> 1.5.1'
