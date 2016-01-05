@@ -32,7 +32,7 @@ css_files:
 #   - ../engine/spec/javascripts
 #
 # defaults to spec/javascripts
-spec_dir: spec/javascripts/unit
+spec_dir: spec/javascripts/
 
 # list of file expressions to include as helpers into spec runner
 # relative path from spec_dir
@@ -42,7 +42,7 @@ helpers:
 # list of file expressions to include as specs into spec runner
 # relative path from spec_dir
 spec_files:
-  - "**/*[Ss]pec.{js.coffee,js,coffee}"
+  - "unit/**/*[Ss]pec.{js.coffee,js,coffee}"
 
 # path to directory of temporary files
 # (spec runner and asset cache)

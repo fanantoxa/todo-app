@@ -14,7 +14,7 @@ class RegistrationCtrl
       password_confirmation: ''
     }
 
-    $scope.regiter = =>
+    $scope.register = =>
       config = { headers: { 'X-HTTP-Method-Override': 'POST' } }
       Auth.register($scope.credentials, config).then (registeredUser) ->
         $location.path '/'
