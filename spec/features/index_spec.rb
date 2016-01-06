@@ -1,6 +1,6 @@
 require 'features_helper'
 
-describe 'index page.', js: true do
+describe 'Index page.', js: true do
   let(:index_page) { Todo::IndexPage.new }
   let(:login_page) { Todo::LoginPage.new }
 
