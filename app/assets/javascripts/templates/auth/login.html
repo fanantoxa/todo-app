@@ -9,20 +9,20 @@
           </div>
           <div class="form-group">
             <div class="input-group">
-              <span class="input-group-addon" id="email"><span class="glyphicon glyphicon-envelope"></span></span>
-              <input ng-model="credentials.email" type="email" class="form-control" placeholder="Email" aria-describedby="email">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+              <input id="email" ng-model="credentials.email" type="email" class="form-control" placeholder="Email">
             </div>
           </div>
           
           <div class="form-group">
             <div class="input-group">
-              <span class="input-group-addon" id="password"><span class="glyphicon glyphicon-lock"></span></span>
-              <input ng-model="credentials.password" type="password" class="form-control" placeholder="Password" aria-describedby="password">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+              <input id="password" ng-model="credentials.password" type="password" class="form-control" placeholder="Password">
             </div>
           </div>
 
           <div class="form-group">
-            <button ng-click="login()" type="button" class="btn btn-custom btn-lg btn-block">Login</button>
+            <button id="login_btn" ng-click="login()" type="button" class="btn btn-custom btn-lg btn-block">Login</button>
           </div>
         </form>
       </div>

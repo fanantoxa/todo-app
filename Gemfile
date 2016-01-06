@@ -43,9 +43,15 @@ end
 
 group :development do
   gem 'better_errors'
+end
+
+group :test do
   gem 'capybara-rails'
   gem 'site_prism', '~> 2.8'
   gem 'database_cleaner', '~> 1.5.1'
   gem 'shoulda-matchers', '~>3.0.1'
+  gem 'selenium-webdriver', '~> 2.48.1'
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
 
