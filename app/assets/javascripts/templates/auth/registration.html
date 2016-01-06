@@ -6,8 +6,8 @@
         <form>
           <div class="form-group">
             <div class="input-group">
-              <span class="input-group-addon" id="email"><span class="glyphicon glyphicon-envelope"></span></span>
-              <input ng-model="credentials.email"{{credentials.email}} type="email" class="form-control" placeholder="Email" aria-describedby="email">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+              <input id="email" ng-model="credentials.email"{{credentials.email}} type="email" class="form-control" placeholder="Email">
             </div>
             <div class="errors errors-small errors-right" ng-show="errors.email">
               <p>Field {{errors.email}}</p>
@@ -16,8 +16,8 @@
           
           <div class="form-group">
             <div class="input-group">
-              <span class="input-group-addon" id="password"><span class="glyphicon glyphicon-lock"></span></span>
-              <input ng-model="credentials.password" type="password" class="form-control" placeholder="Password" aria-describedby="password">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+              <input id="password" ng-model="credentials.password" type="password" class="form-control" placeholder="Password">
             </div>
             <div class="errors errors-small errors-right" ng-show="errors.password">
               <p>Field {{errors.password}}</p>
@@ -26,8 +26,8 @@
 
           <div class="form-group">
             <div class="input-group">
-              <span class="input-group-addon" id="confirm_password"><span class="glyphicon glyphicon-lock"></span></span>
-              <input ng-model="credentials.password_confirmation" type="password" class="form-control" placeholder="Confirm password" aria-describedby="confirm_password">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+              <input id="password_confirmation" ng-model="credentials.password_confirmation" type="password" class="form-control" placeholder="Confirm password">
             </div>
             <div class="errors errors-small errors-right" ng-show="errors.password_confirmation">
               <p>Field {{errors.password_confirmation}}</p>
@@ -35,11 +35,11 @@
           </div>
 
           <div class="form-group">
-            <button ng-click="register()" type="button" class="btn btn-custom btn-lg btn-block">Register account</button>
+            <button id="registration_btn" ng-click="register()" type="button" class="btn btn-custom btn-lg btn-block">Register account</button>
           </div>
         </form>
       </div>
-      <div class="panel-footer">Already have an account? <a ui-sref='login'>Login here</a></div>
+      <div class="panel-footer">Already have an account? <a class="login_link" ui-sref='login'>Login here</a></div>
     </div>
   </div>
 </div>
