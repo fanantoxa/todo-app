@@ -107,63 +107,97 @@ body {
   .tasks {
     padding: 0;
 
-    .status, .order, .edit, .remove, .add, .date {
-      width: 40px;
-      table-layout: fixed;
-      text-align: center;
+    .task-form {
+      display: flex;
+      flex-direction: row;
+      padding: 5px;
 
-      span {
-        cursor: pointer;
+      .sign, .date, .add {
+        text-align: center;
+        align-self: center;
+      }
+
+      .sign, .date {
+        flex: 0 0 40px;
+      }
+
+      .add {
+        flex: 0 0 auto;
+      }
+
+      .text {
+        flex: 1;
       }
     }
-
-    .sign {
-      width: 40px;
-      table-layout: fixed;
-      text-align: center;
-    }
-
-    table {
-      margin-bottom: 0px;
-    }
-
-    .task-form td {
-      vertical-align: middle;
-    }
-
-    .comments {
-      margin-top: 8px;
-
-      .comment {
-        margin-bottom: 5px;
-
-        .comment-body{
-          margin-bottom: 10px;
+    
+    .task-list {
+      .task-container {
+        &:nth-of-type(even) {
+          background-color: $main-color-light;
         }
-
-        .comment-files ul {
-          margin-bottom: 0px;
-          list-style-type: none;
-          padding-left: 10px;
-
-          .comment-file {
-            font-size: 12px;
+        
+        .task {
+          display: flex;
+          flex-direction: row;
+          
+          > div {
+            padding: 8px;
+          }
+          
+          .status, .edit, .remove {
+            flex: 0 0 40px;
+            text-align: center;
+            align-self: center;
+          }
+          
+          .task-text {
+            flex: 1;
+          }
+          
+          .date { 
+            flex: 0 0 auto;
           }
         }
       }
+      
+      .comments {
+        padding: 0 8px 0 8px;
+        
+        .commens-list {
+          .comment {
+            margin-bottom: 5px;
+            
+            .comment-body {
+              
+            }
+            
+            .comment-files ul {
+              margin-bottom: 0px;
+              list-style-type: none;
+              padding-left: 10px;
+              
+              .comment-file {
+                font-size: 12px;
+              }
+            }
+          }
+          
+          .comment-form {
+            padding-bottom: 8px;
+            
+            textarea {
+              resize: none;
+            }
 
-      .comment-form {
-        textarea {
-          resize: none;
-        }
+            .attached-files ul {
+              margin-bottom: 0px;
+              list-style-type: none;
+              padding-left: 10px;
 
-        .attached-files ul {
-          margin-bottom: 0px;
-          list-style-type: none;
-          padding-left: 10px;
-
-          .attached-file {
-            font-size: 12px;
+              .attached-file {
+                font-size: 12px;
+              }
+            }
           }
         }
       }
