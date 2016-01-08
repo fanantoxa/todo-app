@@ -8,9 +8,13 @@
 case Rails.env
 when 'development'
 when 'test'
-  User.create!(email: 'test@test.test', 
-             password: 'testing1', 
-             password_confirmation: 'testing1')
+  Project.delete_all
+  User.delete_all
+  user = User.create!(email: 'test@test.test', 
+                      password: 'testing1', 
+                      password_confirmation: 'testing1')
+  project = Project.create! name: 'Test project', user_id: user.id
+  Project.create! name: 'Test project 2', user_id: user.id
 when 'production'
   # production seeds (if any) ...
 

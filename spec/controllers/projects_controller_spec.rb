@@ -1,2 +1,4 @@
-require 'rails_helper'describe ProjectsController, type: :controller do
+require 'rails_helper'
+
+RSpec.describe ProjectsController, type: :controller do
 end
