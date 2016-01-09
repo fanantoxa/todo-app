@@ -1,9 +1,13 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!
+
   respond_to :json
+
   before_action :set_project, only: [:update, :destroy]
 
   def index
-    @projects = Project.all
+    projects = Project.all
+    render json: projects.to_json, status: :ok
   end
 
   def create
