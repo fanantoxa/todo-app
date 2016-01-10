@@ -6,7 +6,7 @@ class TasksController < ApplicationController
 
   def index 
     tasks = @project.tasks.all
-    render json: tasks.to_json, status: :ok
+    render json: tasks, status: :ok
   end
 
   def create
