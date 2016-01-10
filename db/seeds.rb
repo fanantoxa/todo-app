@@ -25,6 +25,7 @@ when 'test'
   comment = Comment.create! text: 'coment 1 text', task_id: task.id
   Comment.create! text: 'coment 2 text', task_id: task.id
   Comment.create! text: 'coment 3 text', task_id: task.id
+  Comment.create! text: 'coment 4 text', task_id: task.id
 when 'production'
   # production seeds (if any) ...
 
