@@ -37,6 +37,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts_as_list (0.7.2)
+      activerecord (>= 3.0)
     addressable (2.4.0)
     angular-rails-templates (0.2.0)
       railties (>= 3.1)
@@ -286,6 +288,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_list
   angular-rails-templates
   angular-ui-router-rails
   angular_rails_csrf
