@@ -37,11 +37,12 @@ class ProjectsController < ApplicationController
   end
 
   private
-    def set_project
-      @project = Project.find(params[:id])
-    end
+  
+  def set_project
+    @project = current_user.projects.find(params[:id])
+  end
 
-    def project_params
-      params.permit(:name).merge(user: current_user)
-    end
+  def project_params
+    params.permit(:name).merge(user: current_user)
+  end
 end
