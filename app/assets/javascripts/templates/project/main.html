@@ -1,3 +1,39 @@
 <div id="projects">
-<h1>Project will be here</h1>
+  <div class="project-list">
+    <div class="row" ng-repeat="project in projects">
+      <div class="project-item">
+        <div class="panel panel-custom">
+          <div class="panel-heading">
+            <h4>
+              <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 
+              <span class="project-name">Project name</span> 
+              <span class="glyphicon glyphicon-trash remove" aria-hidden="true"></span> 
+              <span class="glyphicon glyphicon-pencil edit" aria-hidden="true"></span> 
+            </h4>
+          </div>
+          <div class="panel-body tasks">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="project-form">
+    <div class="row">
+      <div class="panel panel-custom">
+        <div class="panel-heading">
+          <h4>
+            <form>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Start typing here project name">
+                <span class="input-group-btn">
+                  <button class="btn btn-custom" type="button">Add new project</button>
+                </span>
+              </div>
+            </form> 
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
