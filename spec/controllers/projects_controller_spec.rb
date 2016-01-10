@@ -50,7 +50,7 @@ RSpec.describe ProjectsController, type: :controller do
     let(:project) { @user.projects.first }
 
     it 'should remove existing project' do
-      put :destroy, id: project.id, format: :json
+      delete :destroy, id: project.id, format: :json
       expect(response).to have_http_status(:no_content)
     end
   end

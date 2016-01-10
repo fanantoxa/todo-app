@@ -6,6 +6,7 @@ gem 'pg', '~> 0.15'
 gem 'rails_12factor', group: :production
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'acts_as_list'
 
 # Assets
 gem 'sass-rails', '~> 5.0'
