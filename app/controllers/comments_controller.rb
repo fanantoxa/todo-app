@@ -1,13 +1,10 @@
 class CommentsController < ApplicationController
+  include IndexConcern
+  
   before_action :authenticate_user!
   before_action :set_task
 
   respond_to :json
-
-  def index
-    comments = @task.comments.all
-    render json: comments, status: :ok
-  end
 
   def create
     comment = Comment.new(comment_params)
@@ -29,6 +26,10 @@ class CommentsController < ApplicationController
   end
 
   private 
+
+  def repo
+    @repo ||= CommentsRepository.new(current_user, params)
+  end
 
   def set_task
     project = current_user.projects.find(params[:project_id])

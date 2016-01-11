@@ -1,13 +1,10 @@
 class TasksController < ApplicationController
+  include IndexConcern
+
   before_action :authenticate_user!
   before_action :set_project
 
   respond_to :json
-
-  def index 
-    tasks = @project.tasks.all
-    render json: tasks, status: :ok
-  end
 
   def create
     task = Task.new(task_params)
@@ -41,6 +38,10 @@ class TasksController < ApplicationController
   end
 
   private
+
+  def repo
+    @repo ||= TasksRepository.new(current_user, params)
+  end
 
   def task
     @project.tasks.find(params[:id])

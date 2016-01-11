@@ -1,14 +1,11 @@
 class ProjectsController < ApplicationController
+  include IndexConcern
+
   before_action :authenticate_user!
 
   respond_to :json
 
   before_action :set_project, only: [:update, :destroy]
-
-  def index
-    projects = Project.all
-    render json: projects.to_json, status: :ok
-  end
 
   def create
     project = Project.new(project_params)
@@ -36,7 +33,12 @@ class ProjectsController < ApplicationController
     end
   end
 
+
   private
+
+  def repo
+    @repo ||= ProjectsRepository.new(current_user, params)
+  end
   
   def set_project
     @project = current_user.projects.find(params[:id])
