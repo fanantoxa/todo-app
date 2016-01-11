@@ -18,6 +18,12 @@ class ProjectsRepository < BaseRepository
     [status, new_progect]
   end
 
+  def update_item
+    project = @projects.find(@params[:id])
+    status = project.update(filter_params)
+    [status, project]
+  end
+
   private
 
   def filter_params

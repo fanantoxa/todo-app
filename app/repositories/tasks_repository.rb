@@ -18,7 +18,24 @@ class TasksRepository < BaseRepository
     [status, new_progect]
   end
 
+  def update_item
+    task = @project.tasks.find(@params[:id])
+
+    action = @params.include?(:position) && :update_position || :update_field
+    status = self.send(action, task)
+
+    [status, task]
+  end
+
   private
+
+  def update_position(task)
+    task.insert_at(@params[:position].to_i)
+  end
+
+  def update_field(task)
+    task.update(filter_params)
+  end
 
   def filter_params
     @params.permit(:name, :due_date, :status, :position).merge(project: @project)
