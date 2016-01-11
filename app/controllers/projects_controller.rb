@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   include IndexConcern
+  include DestroyConcern
 
   before_action :authenticate_user!
 
@@ -24,15 +25,6 @@ class ProjectsController < ApplicationController
       render json: @project.errors, status: :unprocessable_entity
     end
   end
-
-  def destroy
-    if @project.destroy
-      head :no_content
-    else
-      head :unprocessable_entity
-    end
-  end
-
 
   private
 

@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   include IndexConcern
+  include DestroyConcern
 
   before_action :authenticate_user!
   before_action :set_project
@@ -26,14 +27,6 @@ class TasksController < ApplicationController
       render json: task, status: :ok
     else
       render json: task.errors, status: :unprocessable_entity
-    end
-  end
-
-  def destroy
-    if task.destroy
-      head :no_content
-    else
-      head :unprocessable_entity
     end
   end
 

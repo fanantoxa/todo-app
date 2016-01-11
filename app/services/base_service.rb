@@ -1,5 +1,8 @@
+require_dependency './app/services/named_callbacks'
+
 class BaseService
   def initialize(context, repo)
+    @callbacks = NamedCallbacks.new
     @context = context
     @repo = repo
     yield(@callbacks) if block_given?

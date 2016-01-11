@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   include IndexConcern
-  
+  include DestroyConcern
+
   before_action :authenticate_user!
   before_action :set_task
 
@@ -12,16 +13,6 @@ class CommentsController < ApplicationController
       render json: comment, status: :created
     else
       render json: comment.errors, status: :unprocessable_entity
-    end
-  end
-
-  def destroy
-    comment = @task.comments.find(params[:id])
-    
-    if comment.destroy
-      head :no_content
-    else
-      head :unprocessable_entity
     end
   end
 
