@@ -1,20 +1,12 @@
 class TasksController < ApplicationController
   include IndexConcern
   include DestroyConcern
+  include CreateConcern
 
   before_action :authenticate_user!
   before_action :set_project
 
   respond_to :json
-
-  def create
-    task = Task.new(task_params)
-    if task.valid? && task.save
-      render json: task, status: :created
-    else
-      render json: task.errors, status: :unprocessable_entity
-    end
-  end
 
   def update
     result = if params[:position].present?

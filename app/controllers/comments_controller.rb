@@ -1,20 +1,12 @@
 class CommentsController < ApplicationController
   include IndexConcern
   include DestroyConcern
+  include CreateConcern
 
   before_action :authenticate_user!
   before_action :set_task
 
   respond_to :json
-
-  def create
-    comment = Comment.new(comment_params)
-    if comment.valid? && comment.save
-      render json: comment, status: :created
-    else
-      render json: comment.errors, status: :unprocessable_entity
-    end
-  end
 
   private 
 

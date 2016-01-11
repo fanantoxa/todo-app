@@ -1,14 +1,26 @@
 class TasksRepository < BaseRepository
   def initialize(current_user, params)
     super
-    @tasks = @current_user.projects.find(@params[:project_id]).tasks
+    @project = @current_user.projects.find(@params[:project_id])
   end
 
   def list
-    @tasks.all
+    @project.tasks.all
   end
 
   def remove_item
-    @tasks.find(@params[:id]).destroy
+    @project.tasks.find(@params[:id]).destroy
+  end
+
+  def create_item
+    new_progect = Task.new(filter_params)
+    status = new_progect.valid? && new_progect.save
+    [status, new_progect]
+  end
+
+  private
+
+  def filter_params
+    @params.permit(:name, :due_date, :status, :position).merge(project: @project)
   end
 end
