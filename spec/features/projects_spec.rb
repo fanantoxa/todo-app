@@ -5,7 +5,7 @@ describe 'Projects page.', js: true do
   let(:projects_page) { Todo::ProjectsPage.new }
 
   feature 'I want be able to see from for adding project' do
-    let(:user) { FactoryGirl.build :user }
+    let(:user) { FactoryGirl.create :user }
 
     before do
       login_page.load
