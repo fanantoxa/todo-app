@@ -14,8 +14,14 @@ Vagrant.configure(2) do |config|
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "ubuntu/trusty64"
 
+  config.ssh.username = 'vagrant'
+  config.ssh.password = 'vagrant'
+  config.ssh.insert_key = 'true'
+
   config.vm.network :forwarded_port, guest: 300, host: 3000
-  config.vm.synced_folder('.','/vagrant')
+
+  config.vm.synced_folder('','/vagrant')
+
   config.vm.provision :shell, path: "provision.sh"
 
   # Disable automatic box update checking. If you disable this, then

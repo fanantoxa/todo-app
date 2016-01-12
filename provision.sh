@@ -13,14 +13,17 @@ dpkg-reconfigure locales en
 sudo apt-get install -y git
 sudo apt-get install -y postgresql postgresql-client postgresql-contrib libpq-dev
 
-sudo pg_createcluster 9.3 main --start
-
 echo "Installing rvm, ruby and bundler"
 
-\curl -sSL https://get.rvm.io | bash
+sudo \curl -sSL https://get.rvm.io | bash
+
 source ~/.rvm/scripts/rvm
+type rvm | head -n 1
+
 
 rvm install 2.2.1
+rvm --default use ruby-2.2.1
+rvm use ruby-2.2.1
 
 gem install bundler
 
