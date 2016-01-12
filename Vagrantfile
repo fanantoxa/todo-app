@@ -36,8 +36,7 @@ Vagrant.configure("2") do |config|
         :pg_hba   => [
           {
             :type   => "local",
-            :user   => "todo_user",
-            :password => 'testing'
+            :user   => "todo_user"
           },
           {
             :type   => "host",
@@ -55,26 +54,9 @@ Vagrant.configure("2") do |config|
           }
         ],
         :password => {
-          :postgres => "password"
+          :postgres => "testing"
         }
-      },
-      :rake       => [
-        {
-          working_directory: "/vagrant",
-          arguments: "db:create:all --trace",
-          action: :run        
-        },
-        {
-          working_directory: "/vagrant",
-          arguments: "db:migrate --trace",
-          action: :run        
-        },
-        {
-          working_directory: "/vagrant",
-          arguments: "db:migrate --trace RAILS_ENV=test",
-          action: :run        
-        }
-      ]
+      }
     }
   end
 end
