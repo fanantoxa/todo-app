@@ -76,6 +76,11 @@ GEM
       capybara-console
       database_cleaner
       exception_notification
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     childprocess (0.5.9)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.0)
@@ -296,6 +301,7 @@ DEPENDENCIES
   better_errors
   bootstrap-sass (~> 3.3.6)
   capybara-rails
+  carrierwave
   coffee-rails (~> 4.1.0)
   database_cleaner (~> 1.5.1)
   devise

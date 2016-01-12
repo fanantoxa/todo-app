@@ -14,7 +14,7 @@ describe 'Index page.', js: true do
 
   feature 'I want be redirected to projects page if I am logged in' do
     let(:projects_page) { Todo::ProjectsPage.new }
-    let(:user) { FactoryGirl.build :user }
+    let(:user) { FactoryGirl.create :user }
 
     scenario "visited with old session" do
       index_page.load

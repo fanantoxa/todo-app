@@ -2,16 +2,15 @@ require 'rails_helper'
 
 RSpec.describe TasksController, type: :controller do
   before(:each) do
-    @user = User.find_by(email: 'test@test.test')
-    sign_in @user
-    @project = @user.projects.find_by(name: 'Test project')
+    @task = FactoryGirl.create :task
+    sign_in @task.project.user
   end
     
   describe '#index' do
 
     it 'should return all tasks' do
-      get :index, project_id: @project.id ,format: :json
-      expect(JSON.parse(response.body).count).to eq(3)
+      get :index, project_id: @task.project.id ,format: :json
+      expect(JSON.parse(response.body).count).to eq(1)
       expect(response).to have_http_status(:ok)
     end
   end
@@ -19,62 +18,58 @@ RSpec.describe TasksController, type: :controller do
   describe '#create' do
 
     it 'should create new task' do
-      post :create, project_id: @project.id, name: 'new task', format: :json
+      post :create, project_id: @task.project.id, name: 'new task', format: :json
       expect(response).to have_http_status(:created)
     end
 
     it 'should create new task with due date' do
-      post :create, project_id: @project.id, name: 'new task',
+      post :create, project_id: @task.project.id, name: 'new task',
         due_date: Time.new ,format: :json
       expect(response).to have_http_status(:created)
     end
 
     it 'should return validation errors' do
-      post :create, project_id: @project.id, name: '', format: :json
+      post :create, project_id: @task.project.id, name: '', format: :json
       expect(response).to have_http_status(:unprocessable_entity)
       expect(JSON.parse(response.body).count).to eq(1)
     end
   end
 
   describe '#update' do
-    let(:task) { @project.tasks.first }
-
     it 'should update name of existing task' do
-      put :update, project_id: @project.id, id: task.id, name: 'some other name', format: :json
+      put :update, project_id: @task.project.id, id: @task.id, name: 'some other name', format: :json
       expect(response).to have_http_status(:ok)
       expect(JSON.parse(response.body)['name']).to eq('some other name')
     end
 
     it 'should update status of existing task' do
-      put :update, project_id: @project.id, id: task.id, status: true, format: :json
+      put :update, project_id: @task.project.id, id: @task.id, status: true, format: :json
       expect(response).to have_http_status(:ok)
       expect(JSON.parse(response.body)['status']).to eq(true)
     end
 
     it 'should update due_date of existing task' do
       time = DateTime.now.utc.to_s
-      put :update, project_id: @project.id, id: task.id, due_date: time, format: :json
+      put :update, project_id: @task.project.id, id: @task.id, due_date: time, format: :json
       expect(response).to have_http_status(:ok)
       expect(DateTime.parse(JSON.parse(response.body)['due_date']).utc).to eq(time)
     end
 
     it 'should update position of existing task' do
-      put :update, project_id: @project.id, id: task.id, position: 3, format: :json
+      put :update, project_id: @task.project.id, id: @task.id, position: 3, format: :json
       expect(response).to have_http_status(:ok)
       expect(JSON.parse(response.body)['position']).to eq(3)
     end
 
     it 'should return validation errors' do
-      put :update, project_id: @project.id, id: task.id, name: '', format: :json
+      put :update, project_id: @task.project.id, id: @task.id, name: '', format: :json
       expect(response).to have_http_status(:unprocessable_entity)
     end
   end
 
   describe '#destroy' do
-    let(:task) { @project.tasks.first }
-
     it 'should remove existing task' do
-      delete :destroy, project_id: @project.id, id: task.id, format: :json
+      delete :destroy, project_id: @task.project.id, id: @task.id, format: :json
       expect(response).to have_http_status(:no_content)
     end
   end

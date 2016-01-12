@@ -27,7 +27,7 @@ describe 'Login page.', js: true do
   end
 
   feature 'I want be able to log in with form' do
-    let(:user) { FactoryGirl.build :user }
+    let(:user) { FactoryGirl.create :user }
     let(:not_exist_user) { FactoryGirl.build :not_exist_user }
 
     scenario 'to existing customer' do
