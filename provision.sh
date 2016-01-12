@@ -1,15 +1,22 @@
-#!/bin/bash
+#!/bin/bash --login 
+
+echo "Installing dependencies"
+
+sudo apt-get install -y libgmp-dev libpq-dev
 
 cd /vagrant
 
+echo "set for for rails app"
 echo "VAGRANT_PORT=0.0.0.0" | sudo tee -a /etc/environment
 export VAGRANT_PORT=0.0.0.0
 
 echo "Install ruby v 2.2.1"
+
 rvm install 2.2.1
+
 echo "set as default"
-rvm --default use ruby-2.2.1
 rvm use ruby-2.2.1
+rvm --default use ruby-2.2.1
 rvm rvmrc warning ignore allGemfiles
 
 echo "configuring postgres"

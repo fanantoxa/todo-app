@@ -7,7 +7,7 @@ if ENV.include?('VAGRANT_PORT')
   module Rails
     class Server
       def default_options
-        super.merge(Host: ENV['VAGRANT_PORT'], Port: 3000)
+        super.merge(Host: ENV['VAGRANT_PORT'], Port: 3001)
       end
     end
   end
