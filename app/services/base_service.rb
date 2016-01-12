@@ -1,5 +1,3 @@
-require_dependency './app/services/named_callbacks'
-
 class BaseService
   def initialize(context, repo)
     @callbacks = NamedCallbacks.new
@@ -9,7 +7,7 @@ class BaseService
   end
 
   def run
-    raise 'Action not described'
+    'Action not described'
   end
 
   private

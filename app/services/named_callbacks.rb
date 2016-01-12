@@ -1,4 +1,3 @@
-
 class NamedCallbacks
   def initialize
     @callbacks = {}
