@@ -11,12 +11,11 @@ RSpec.describe CommentsRepository do
   let(:current_user) { double( projects: projects)}
 
   let(:permit_params) { double(merge: 'params') }
-  let(:params) {double('[]' => double())}
+  let(:params) {{'text' => 'txt', 'project_id' => 1, 'task_id' => 2, 'id' => 3}}
   let(:repository) { CommentsRepository.new(current_user, params) }
   let(:comment_model) { double(valid?: true, save: true) }
 
   before do
-    allow(params).to receive(:permit).and_return(permit_params)
     allow(Comment).to receive(:new).and_return(comment_model)
   end
 
@@ -36,7 +35,7 @@ RSpec.describe CommentsRepository do
   describe '#create_item' do
     it 'should create comment' do
       expect(repository.create_item).to eq([true, comment_model])
-      expect(Comment).to have_received(:new).with('params')
+      expect(Comment).to have_received(:new).with({'text' => 'txt', task: task})
     end
   end
 end

@@ -10,6 +10,10 @@ class CommentsController < ApplicationController
   private 
 
   def repo
-    @repo ||= CommentsRepository.new(current_user, params)
+    @repo ||= CommentsRepository.new(current_user, permited_params)
+  end
+
+  def permited_params
+    params.permit(:text, :id, :project_id, :task_id)
   end
 end

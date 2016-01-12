@@ -11,6 +11,10 @@ class ProjectsController < ApplicationController
   private
 
   def repo
-    @repo ||= ProjectsRepository.new(current_user, params)
+    @repo ||= ProjectsRepository.new(current_user, permited_params)
+  end
+
+  def permited_params
+    params.permit(:name, :id)
   end
 end

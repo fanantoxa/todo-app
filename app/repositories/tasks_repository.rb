@@ -1,7 +1,9 @@
 class TasksRepository < BaseRepository
+  FILTER = %w(name due_date status position)
+
   def initialize(current_user, params)
     super
-    @project = @current_user.projects.find(@params[:project_id])
+    @project = @current_user.projects.find(@params['project_id'])
   end
 
   def list
@@ -9,19 +11,19 @@ class TasksRepository < BaseRepository
   end
 
   def remove_item
-    @project.tasks.find(@params[:id]).destroy
+    @project.tasks.find(@params['id']).destroy
   end
 
   def create_item
-    new_progect = Task.new(filter_params)
+    new_progect = Task.new(prepared_params)
     status = new_progect.valid? && new_progect.save
     [status, new_progect]
   end
 
   def update_item
-    task = @project.tasks.find(@params[:id])
+    task = @project.tasks.find(@params['id'])
 
-    action = @params.include?(:position) && :update_position || :update_field
+    action = @params['position'] && :update_position || :update_field
     status = self.send(action, task)
 
     [status, task]
@@ -30,14 +32,14 @@ class TasksRepository < BaseRepository
   private
 
   def update_position(task)
-    task.insert_at(@params[:position].to_i)
+    task.insert_at(@params['position'].to_i)
   end
 
   def update_field(task)
-    task.update(filter_params)
+    task.update(prepared_params)
   end
 
-  def filter_params
-    @params.permit(:name, :due_date, :status, :position).merge(project: @project)
+  def prepared_params
+    filter_params(@params, FILTER).merge(project: @project)
   end
 end
