@@ -15,9 +15,9 @@ class TasksRepository < BaseRepository
   end
 
   def create_item
-    new_progect = Task.new(prepared_params)
-    status = new_progect.valid? && new_progect.save
-    [status, new_progect]
+    new_task = Task.new(prepared_params)
+    status = new_task.valid? && new_task.save
+    [status, new_task]
   end
 
   def update_item

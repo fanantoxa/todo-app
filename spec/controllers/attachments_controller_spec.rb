@@ -18,7 +18,7 @@ RSpec.describe AttachmentsController, type: :controller do
 
   describe '#create' do
     before do
-      @file = fixture_file_upload('images/1.jpg', 'image/jpeg')
+      @file = fixture_file_upload('spec/fixtures/images/1.jpg', 'image/jpeg')
     end
 
     it 'should upload file to server' do

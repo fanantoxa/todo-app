@@ -15,9 +15,9 @@ class CommentsRepository < BaseRepository
   end
 
   def create_item
-    new_progect = Comment.new(prepared_params)
-    status = new_progect.valid? && new_progect.save
-    [status, new_progect]
+    new_comment = Comment.new(prepared_params)
+    status = new_comment.valid? && new_comment.save
+    [status, new_comment]
   end
 
   private

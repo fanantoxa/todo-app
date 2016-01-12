@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   include IndexConcern
-  include DestroyConcern
   include CreateConcern
+  include DestroyConcern
 
   before_action :authenticate_user!
 

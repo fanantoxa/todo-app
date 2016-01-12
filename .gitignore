@@ -12,6 +12,5 @@
 !/log/.keep
 /tmp
 
-/public/uploads
-/public/assets/
 /public/uploads/
+/public/assets/
