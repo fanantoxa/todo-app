@@ -1,5 +1,5 @@
 angular.module 'Todo'
-  .directive 'todoFocus', todoFocus: ($timeout) ->
+  .directive 'todoFocus', ($timeout) ->
     (scope, elem, attrs) ->
       scope.$watch attrs.todoFocus, (newVal) ->
         if (newVal)

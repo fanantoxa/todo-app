@@ -3,18 +3,19 @@
     <div class="row" ng-repeat="project in projects_list">
       <div class="project-item">
         <div class="panel panel-custom">
-          <div class="panel-heading">
-            <h4 ng-class="{completed: project.completed, editing: project == edited_project}">
+          <div class="panel-heading" ng-class="{editing: project == edited_project}">
+            <h4>
               <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 
-              <span class="project-name">{{ project.name }}</span> 
-              <span class="glyphicon glyphicon-pencil edit" aria-hidden="true"></span> 
+              <span class="project-name" ng-dblclick="editProject(project)">{{ project.name }}</span> 
+              <span class="glyphicon glyphicon-pencil edit" aria-hidden="true" ng-click="editProject(project)"></span> 
               <span class="glyphicon glyphicon-trash remove" aria-hidden="true" ng-click="destroyProject(project)"></span> 
             </h4>
             <form ng-submit="updateProject(project, 'submit')">
               <span class="project-name">
-              <input class="edit" ng-trim="false" ng-model="project.name" todo-escape="cancelEditing(project)" ng-blur="updateProject(project, 'blur')" todo-focus="project == edited_project">
+              <input class="edit" ng-trim="false" ng-model="project.name" todo-escape="cancelEditing(project)" todo-focus="project == edited_project">
               </span>
-              <span class="glyphicon glyphicon-pencil edit" aria-hidden="true"></span>
+              <span class="glyphicon glyphicon-ok" aria-hidden="true" ng-click="updateProject(project, 'submit')"></span>
+              <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true" ng-click="cancelEditing(project)"></span>
             </form>
           </div>
           <div class="panel-body tasks">

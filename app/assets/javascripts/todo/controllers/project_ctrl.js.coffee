@@ -2,14 +2,12 @@ class ProjectCtrl
   constructor: (@$scope, @$location, @Auth, @ProjectResource) ->
     @$location.path '/' unless @Auth.isAuthenticated()
     @$scope.projects_list = @ProjectResource.query()
+    @$scope.edited_project = null
 
     @$scope.addProject = this.addProject
-
     @$scope.editProject = this.editProject
     @$scope.cancelEditing = this.cancelEditing
-    @$scope.updateProject = updateProject
-
-
+    @$scope.updateProject = this.updateProject
     @$scope.destroyProject = this.destroyProject
 
   addProject: (new_project) =>
@@ -29,32 +27,19 @@ class ProjectCtrl
     projects[projects.indexOf(project)] = @$scope.original_project
     @$scope.edited_project = null
     @$scope.original_project = null
-    @$scope.reverted = true
 
-  updateProject: (project, event) ->
-    if (event === 'blur' && @$scope.save_event === 'submit') {
-      @$scope.save_event = null
-      return
-    }
-
-    @$scope.save_event = event
-
-    if (@$scope.reverted)
-      @$scope.reverted = null
-      return
-
+  updateProject: (project, event) =>
     project.name = project.name.trim()
 
-    if (project === @$scope.original_project.name)
+    if (project == @$scope.original_project)
       @$scope.edited_project = null
       return
 
-    @ProjectResource.save(project)
-      .$promise.then (project) =>
-      ,(error) =>
-        project.name = @$scope.original_project.name
-      , () =>
+    @ProjectResource.update(project)
+      .$promise.then (project) => 
         @$scope.edited_project = null
+      ,(error) =>
+        project.name = @$scope.original_project.name        
 
   destroyProject: (project) =>
     @ProjectResource.remove({ id: project.id })

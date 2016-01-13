@@ -86,8 +86,31 @@ body {
       background-color: $main-color-dark;
       border-radius: 0px;
       color: $main-color-light;
-      h4, form {
+      
+      > form {
+        display: none;
+        margin: 10px 0 5px 0;
+
+        span {
+          font-size: 18px;
+        }
+      }
+
+      h4 {
         display: flex;
+      }
+
+      &.editing {
+        h4 {
+          display: none;
+        }
+
+        > form {
+          display: flex;
+        }
+      }
+
+      h4, form {
         flex-direction: row;
       
         .glyphicon {
@@ -104,6 +127,16 @@ body {
           &.project-name {
             flex: 1;
             text-align: left;
+
+            input {
+              outline: none;
+              border: none;
+              background-color: transparent;
+              color: $main-color-light;
+              border-bottom: 1px solid $main-color-light;
+              display: block;
+              width: 100%;
+            }
           }
         }
       }
@@ -122,7 +155,7 @@ body {
 
   #projects {
     .btn-custom {
-      border: 1px solid #9dc5ff;
+      border: 1px solid $main-color-light;
     }
 
     form {
