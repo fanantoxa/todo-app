@@ -4,18 +4,18 @@
       <div class="project-item">
         <div class="panel panel-custom">
           <div class="panel-heading" ng-class="{editing: project == edited_project}">
-            <h4>
+            <h4 class="item">
               <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 
               <span class="project-name" ng-dblclick="editProject(project)">{{ project.name }}</span> 
               <span class="glyphicon glyphicon-pencil edit" aria-hidden="true" ng-click="editProject(project)"></span> 
               <span class="glyphicon glyphicon-trash remove" aria-hidden="true" ng-click="destroyProject(project)"></span> 
             </h4>
-            <form ng-submit="updateProject(project)">
+            <form class="form" ng-submit="updateProject(project)">
               <span class="project-name">
-              <input class="edit" ng-trim="false" ng-model="project.name" todo-escape="cancelEditing(project)" todo-focus="project == edited_project">
+              <input class="project-name" ng-trim="false" ng-model="project.name" todo-escape="cancelEditing(project)" todo-focus="project == edited_project">
               </span>
-              <span class="glyphicon glyphicon-ok" aria-hidden="true" ng-click="updateProject(project)"></span>
-              <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true" ng-click="cancelEditing(project)"></span>
+              <span class="glyphicon glyphicon-ok apply" aria-hidden="true" ng-click="updateProject(project)"></span>
+              <span class="glyphicon glyphicon-remove cancel" aria-hidden="true" ng-click="cancelEditing(project)"></span>
             </form>
           </div>
           <div class="panel-body tasks">

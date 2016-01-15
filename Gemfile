@@ -55,5 +55,6 @@ group :test do
   gem 'selenium-webdriver', '~> 2.48.1'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'headless'
 end
 
