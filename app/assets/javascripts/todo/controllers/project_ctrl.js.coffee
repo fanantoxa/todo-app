@@ -28,7 +28,7 @@ class ProjectCtrl
     @$scope.edited_project = null
     @$scope.original_project = null
 
-  updateProject: (project, event) =>
+  updateProject: (project) =>
     project.name = project.name.trim()
 
     if (project == @$scope.original_project)

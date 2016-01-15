@@ -10,11 +10,11 @@
               <span class="glyphicon glyphicon-pencil edit" aria-hidden="true" ng-click="editProject(project)"></span> 
               <span class="glyphicon glyphicon-trash remove" aria-hidden="true" ng-click="destroyProject(project)"></span> 
             </h4>
-            <form ng-submit="updateProject(project, 'submit')">
+            <form ng-submit="updateProject(project)">
               <span class="project-name">
               <input class="edit" ng-trim="false" ng-model="project.name" todo-escape="cancelEditing(project)" todo-focus="project == edited_project">
               </span>
-              <span class="glyphicon glyphicon-ok" aria-hidden="true" ng-click="updateProject(project, 'submit')"></span>
+              <span class="glyphicon glyphicon-ok" aria-hidden="true" ng-click="updateProject(project)"></span>
               <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true" ng-click="cancelEditing(project)"></span>
             </form>
           </div>
