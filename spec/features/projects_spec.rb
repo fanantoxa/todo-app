@@ -38,6 +38,7 @@ describe 'Projects page.', features: true, js: true do
     scenario 'successful' do
       projects_page.add_new new_project
       wait_for_ajax
+      wait_for_ajax
       expect(projects_page.list.count).to eq 2
     end
 
@@ -45,19 +46,57 @@ describe 'Projects page.', features: true, js: true do
   end
 
   feature 'I want be able edit projects' do
-    feature 'finish editing' do
-      xscenario 'with button' do
+    before do
+      @project_item = projects_page.list[0]
+    end
+
+    feature 'start editing' do
+      scenario 'with button' do
+        @project_item.item_edit_btn.click
+        expect(@project_item).to have_form_name
+        expect(@project_item).to have_no_item
       end
 
-      xscenario 'with ENTER key' do
+      scenario 'with double click' do
+        @project_item.item_name.double_click
+        expect(@project_item).to have_form_name    
+        expect(@project_item).to have_no_item
+      end
+    end
+
+    feature 'finish editing' do
+      before do
+        @project_item = projects_page.list[0]
+        @project_item.item_edit_btn.click
+        @project_item.form_name.set 'sone another text'
+      end
+
+      scenario 'with button' do
+        @project_item.form_apply_btn.click
+        expect(@project_item.item_name).to have_content 'sone another text'
+      end
+
+      scenario 'with ENTER key' do
+        @project_item.form_name.send_keys :enter
+        expect(@project_item.item_name).to have_content 'sone another text'
       end
     end
 
     feature 'cancel editing' do
-      xscenario 'with button' do
+      before do
+        @project_item = projects_page.list[0]
+        @project_item.item_edit_btn.click
+        @project_item.form_name.set 'sone another text'
       end
 
-      xscenario 'with ESC key' do
+      scenario 'with button' do
+        @project_item.form_cancel_btn.click
+        expect(@project_item.item_name).to have_content @project.name
+      end
+
+      scenario 'with ESC key' do
+        @project_item.form_name.send_keys :escape
+        expect(@project_item.item_name).to have_content @project.name
       end
     end
   end
