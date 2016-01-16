@@ -1,16 +1,15 @@
 require 'features_helper'
 
-describe 'Projects page.', js: true do
+describe 'Projects page.', features: true, js: true do
   let(:login_page) { Todo::LoginPage.new }
   let(:projects_page) { Todo::ProjectsPage.new }
   let(:user) { FactoryGirl.create :user }
-  let(:project) { FactoryGirl.create :project, user: user }
   
   before do
+    @project = FactoryGirl.create :project, user: user
     login_page.load
-    login_page.login_as project.user
+    login_page.login_as user
     projects_page.wait_until_projects_visible
-    
   end
 
   feature 'I want be able to see from for adding project' do
@@ -29,28 +28,20 @@ describe 'Projects page.', js: true do
     scenario 'should be presented with already creadted projects' do
       expect(projects_page.list.count).to eq 1
       expect(@project_item).to have_item_edit_btn
-      expect(@project_item.item_name).to have_content project.name
+      expect(@project_item.item_name).to have_content @project.name
     end
   end
 
   feature 'I want be able add projects' do
     let(:new_project) { FactoryGirl.build :project }
 
-    before do
+    scenario 'successful' do
       projects_page.add_new new_project
       wait_for_ajax
-    end
-
-    scenario 'and add one project' do
       expect(projects_page.list.count).to eq 2
     end
 
-    scenario 'and add few projects' do
-      projects_page.add_new new_project
-      wait_for_ajax
-      
-      expect(projects_page.list.count).to eq 3
-    end
+    scenario 'with error'
   end
 
   feature 'I want be able edit projects' do

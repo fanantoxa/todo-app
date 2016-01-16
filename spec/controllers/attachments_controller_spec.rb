@@ -2,8 +2,12 @@ require 'rails_helper'
 
 RSpec.describe AttachmentsController, type: :controller do
   before(:each) do
-    @attachment = FactoryGirl.create :attachment
-    sign_in @attachment.comment.task.project.user
+    @user = FactoryGirl.create :user
+    @project = FactoryGirl.create :project, user: @user
+    @task = FactoryGirl.create :task, project: @project
+    @comment = FactoryGirl.create :comment, task: @task
+    @attachment = FactoryGirl.create :attachment, comment: @comment
+    sign_in @user
   end
 
   describe '#index' do

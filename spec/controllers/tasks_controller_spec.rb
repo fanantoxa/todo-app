@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.describe TasksController, type: :controller do
   before(:each) do
-    @task = FactoryGirl.create :task
-    sign_in @task.project.user
+    @user = FactoryGirl.create :user
+    @project = FactoryGirl.create :project, user: @user
+    @task = FactoryGirl.create :task, project: @project
+    sign_in @user
   end
     
   describe '#index' do
