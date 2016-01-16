@@ -9,7 +9,7 @@ describe 'Projects page.', features: true, js: true do
     @project = FactoryGirl.create :project, user: user
     login_page.load
     login_page.login_as user
-    projects_page.wait_until_projects_visible
+    projects_page.wait_until_list_visible
   end
 
   feature 'I want be able to see from for adding project' do
@@ -26,7 +26,7 @@ describe 'Projects page.', features: true, js: true do
     end
 
     scenario 'should be presented with already creadted projects' do
-      expect(projects_page.list.count).to eq 1
+      expect(projects_page).to have_list count: 1
       expect(@project_item).to have_item_edit_btn
       expect(@project_item.item_name).to have_content @project.name
     end
@@ -37,9 +37,7 @@ describe 'Projects page.', features: true, js: true do
 
     scenario 'successful' do
       projects_page.add_new new_project
-      wait_for_ajax
-      wait_for_ajax
-      expect(projects_page.list.count).to eq 2
+      expect(projects_page).to have_list count: 2, wait: 2
     end
 
     scenario 'with error'
@@ -90,19 +88,31 @@ describe 'Projects page.', features: true, js: true do
       end
 
       scenario 'with button' do
+        expect(@project_item).to have_form_name
+        expect(@project_item).to have_no_item
         @project_item.form_cancel_btn.click
+        @project_item = projects_page.list[0]
+        expect(@project_item).to have_no_form_name
+        expect(@project_item).to have_item
         expect(@project_item.item_name).to have_content @project.name
       end
 
       scenario 'with ESC key' do
+        expect(@project_item).to have_form_name
+        expect(@project_item).to have_no_item
         @project_item.form_name.send_keys :escape
+        @project_item = projects_page.list[0]
+        expect(@project_item).to have_no_form_name
+        expect(@project_item).to have_item
         expect(@project_item.item_name).to have_content @project.name
       end
     end
   end
 
   feature 'I want be able remove projects' do
-    scenario 'remove new project'
-    scenario 'remove already created project'
+    scenario 'successful' do
+      projects_page.list[0].item_delete_btn.click
+      expect(projects_page).to have_list count: 0, wait: 2
+    end
   end
 end
