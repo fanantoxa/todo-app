@@ -4,7 +4,6 @@ describe 'AppCtrl', ->
   beforeEach ->
     @initAppCtrl = ->
       @$controller 'AppCtrl',
-        $scope: @$scope
         $location: @$location
         Auth: @Auth
 

@@ -3,8 +3,9 @@ require 'rails_helper'
 RSpec.describe ProjectsController, type: :controller do
 
   before(:each) do
-    @project = FactoryGirl.create :project
-    sign_in @project.user
+    @user = FactoryGirl.create :user
+    @project = FactoryGirl.create :project, user: @user
+    sign_in @user
   end
 
   describe '#index' do

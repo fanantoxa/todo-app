@@ -2,8 +2,11 @@ require 'rails_helper'
 
 RSpec.describe CommentsController, type: :controller do
   before(:each) do
-    @comment = FactoryGirl.create :comment
-    sign_in @comment.task.project.user
+    @user = FactoryGirl.create :user
+    @project = FactoryGirl.create :project, user: @user
+    @task = FactoryGirl.create :task, project: @project
+    @comment = FactoryGirl.create :comment, task: @task
+    sign_in @user
   end
 
   describe '#index' do 
