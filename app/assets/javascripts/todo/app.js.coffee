@@ -12,7 +12,7 @@ class TodoConfig
       .state 'projects',
         url: '/projects'
         controller: 'ProjectCtrl'
-        templateUrl: 'project/main.html'
+        templateUrl: 'project/template.html'
       .state 'login',
         url: '/login'
         controller:  'LoginCtrl'

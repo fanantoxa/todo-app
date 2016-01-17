@@ -87,7 +87,7 @@ body {
       border-radius: 0px;
       color: $main-color-light;
       
-      > form {
+      .form {
         display: none;
         margin: 10px 0 5px 0;
 
@@ -105,7 +105,7 @@ body {
           display: none;
         }
 
-        > form {
+        .form {
           display: flex;
         }
       }
@@ -166,6 +166,12 @@ body {
   .tasks {
     padding: 0;
 
+    .task-form, .task-list {
+      .date, .edit, .remove, .apply, .cancel {
+        cursor: pointer;
+      }
+    }
+
     .task-form {
       display: flex;
       flex-direction: row;
@@ -194,9 +200,36 @@ body {
         &:nth-of-type(even) {
           background-color: $main-color-light;
         }
-        
+
+        .date {
+          .gone {
+            color: red;
+          }
+
+          .future {
+            color: green;
+          }
+        }
+
+        .form {
+          display: none;
+        }
+
         .task {
           display: flex;
+        }
+
+        &.editing {
+          .task {
+            display: none;
+          }
+
+          .form {
+            display: flex;
+          }
+        }
+        
+        .task, .form {
           flex-direction: row;
           
           > div {
