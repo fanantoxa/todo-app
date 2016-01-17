@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap-datepicker3
  */
 
 @import "bootstrap-sprockets";
@@ -167,7 +168,7 @@ body {
     padding: 0;
 
     .task-form, .task-list {
-      .date, .edit, .remove, .apply, .cancel {
+      .date, .edit, .remove, .apply, .cancel, .comments {
         cursor: pointer;
       }
     }
@@ -213,6 +214,15 @@ body {
 
         .form {
           display: none;
+
+          input {
+            outline: none;
+            border: none;
+            background-color: transparent;
+            border-bottom: 1px solid #000000;
+            display: block;
+            width: 100%;
+          }
         }
 
         .task {

@@ -21,6 +21,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'angularjs-rails'
 gem 'angular-rails-templates'
 gem 'angular-ui-router-rails'
+gem 'bootstrap-datepicker-rails'
 
 source "https://rails-assets.org" do
   gem "rails-assets-angular-devise"

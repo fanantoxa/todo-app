@@ -5,6 +5,8 @@
 #= require angular
 #= require angular-ui-router
 #= require angular-rails-templates
+#= require bootstrap-datepicker/core
+#= require bootstrap-datepicker/locales/bootstrap-datepicker.en-GB
 #= require angular-devise
 #= require angular-resource
 
