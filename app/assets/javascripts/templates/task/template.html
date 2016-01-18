@@ -2,6 +2,11 @@
   <form class="task-form" ng-submit="addTask(new_task)">
     <div class="sign"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></div>
     <div class="text"><input type="text" class="form-control" placeholder="Start typing here to create a task" ng-model="new_task.name"></div>
+    <div class="date">
+      <input type="text" the-datepicker ng-model="new_task.due_date" style="width: 0; height: 0; border: none;">
+      <span data-toggle="datepicker" ng-show="new_task.due_date">{{ new_task.due_date | date: 'dd.MM.yyyy' }}</span>
+      <span data-toggle="datepicker" class="glyphicon glyphicon-calendar" aria-hidden="true" ng-hide="new_task.due_date"></span>
+    </div>
     <div class="add"><button class="btn btn-custom" type="button" ng-click="addTask(new_task)">Add task</button></div>
   </form>
   <div class="task-list">
@@ -10,8 +15,9 @@
         <div class="status"><input type="checkbox" ng-model="task.status" ng-click="updateTask(task, 'status')"></div>
         <div class="task-text" ng-dblclick="editTask(task)">{{ task.name }}</div>
         <div class="date">
-          <span ng-if="!!task.due_date">{{ task.due_date | date: 'dd.MM.yyyy' }}</span>
-          <span class="glyphicon glyphicon-calendar" aria-hidden="true" ng-if="!task.due_date"></span>
+          <input ng-change="updateTask(task, 'due_date')" type="text" the-datepicker ng-model="task.due_date" style="width: 0; height: 0; border: none;">
+          <span data-toggle="datepicker" ng-show="task.due_date">{{ task.due_date | date: 'dd.MM.yyyy' }}</span>
+          <span data-toggle="datepicker" class="glyphicon glyphicon-calendar" aria-hidden="true" ng-hide="task.due_date"></span>
         </div>
         <div class="edit"><span class="glyphicon glyphicon-pencil" aria-hidden="true" ng-click="editTask(task)"></span></div>
         <div class="remove"><span class="glyphicon glyphicon-trash" aria-hidden="true" ng-click="destroyTask(task)"></span></div>
