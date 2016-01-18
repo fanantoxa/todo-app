@@ -3,7 +3,7 @@ angular.module 'Todo'
     {
       restrict: 'A'
       link: (scope, el, attr) ->
-        el.datepicker {autoclose: true, clearBtn: true}
+        el.datepicker {autoclose: true, clearBtn: true, format: 'dd/mm/yyyy'}
         component = el.siblings '[data-toggle="datepicker"]'
         if (component.length)
           component.on 'click', () ->

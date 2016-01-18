@@ -1,5 +1,7 @@
 parseDate = (data) ->
-  data.due_date = new Date(data.due_date) if data.due_date
+  if data.due_date
+    dd = new Date(data.due_date)
+    data.due_date = "#{dd.getDate()}/#{dd.getMonth()+1}/#{dd.getFullYear()}"
   data
 
 angular.module 'Todo'

@@ -16,7 +16,7 @@
         <div class="task-text" ng-dblclick="editTask(task)">{{ task.name }}</div>
         <div class="date">
           <input ng-change="updateTask(task, 'due_date')" type="text" the-datepicker ng-model="task.due_date" style="width: 0; height: 0; border: none;">
-          <span data-toggle="datepicker" ng-show="task.due_date">{{ task.due_date | date: 'dd.MM.yyyy' }}</span>
+          <span data-toggle="datepicker" ng-show="task.due_date">{{ task.due_date }}</span>
           <span data-toggle="datepicker" class="glyphicon glyphicon-calendar" aria-hidden="true" ng-hide="task.due_date"></span>
         </div>
         <div class="edit"><span class="glyphicon glyphicon-pencil" aria-hidden="true" ng-click="editTask(task)"></span></div>
