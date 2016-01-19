@@ -44,6 +44,7 @@ GEM
       railties (>= 3.1)
       sprockets (~> 2)
       tilt
+    angular-ui-bootstrap-rails (0.14.3)
     angular-ui-router-rails (0.2.15)
     angular_rails_csrf (1.0.4)
       rails (>= 3, < 5)
@@ -57,8 +58,6 @@ GEM
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
-    bootstrap-datepicker-rails (1.5.0)
-      railties (>= 3.0)
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -298,11 +297,11 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   angular-rails-templates
+  angular-ui-bootstrap-rails
   angular-ui-router-rails
   angular_rails_csrf
   angularjs-rails
   better_errors
-  bootstrap-datepicker-rails
   bootstrap-sass (~> 3.3.6)
   capybara-rails
   carrierwave

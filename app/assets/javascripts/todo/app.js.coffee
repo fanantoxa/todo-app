@@ -22,7 +22,7 @@ class TodoConfig
         controller:  'RegistrationCtrl'
         templateUrl: 'auth/registration.html'  
 
-angular.module 'Todo', ['ui.router', 'templates', 'Devise', 'ngResource']
+angular.module 'Todo', ['ui.bootstrap', 'ui.router', 'templates', 'Devise', 'ngResource']
 
 angular.module 'Todo'
   .config ['$stateProvider', '$urlRouterProvider', '$httpProvider', TodoConfig ]  

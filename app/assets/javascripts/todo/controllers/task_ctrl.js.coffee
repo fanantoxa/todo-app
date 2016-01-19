@@ -4,11 +4,16 @@ class TaskCtrl
 
     @$scope.tasks_list = @TaskResource.query(project_id: @$scope.projectId)
 
+    @$scope.openDatapicker = this.openDatapicker
+
     @$scope.addTask = this.addTask
     @$scope.editTask = this.editTask
     @$scope.cancelEditingTask = this.cancelEditingTask
     @$scope.updateTask = this.updateTask
     @$scope.destroyTask = this.destroyTask
+
+  openDatapicker: (task) =>
+    task.datapickerOpened = true
 
   addTask: (new_task) =>
     params = this._extandProjectId(new_task)
