@@ -15,6 +15,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'therubyracer', platforms: :ruby
 gem 'sprockets', '2.12.3'
+gem "bower-rails", "~> 0.10.0"
 
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
