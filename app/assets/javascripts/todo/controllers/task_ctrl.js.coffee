@@ -2,6 +2,10 @@ class TaskCtrl
   constructor: (@$scope, @$location, @Auth, @TaskResource) ->
     @$location.path '/' unless @Auth.isAuthenticated()
 
+    @$scope.sortable_options= 
+      animation: 150
+      onUpdate: this.updatePosition
+
     @$scope.tasks_list = @TaskResource.query(project_id: @$scope.projectId)
 
     @$scope.openDatapicker = this.openDatapicker
@@ -19,7 +23,7 @@ class TaskCtrl
     params = this._extandProjectId(new_task)
     @TaskResource.save(params)
       .$promise.then (task) =>
-          @$scope.tasks_list.push task
+          @$scope.tasks_list.unshift task
           @$scope.new_task = {}
       , (error) =>
         console.log 'error'
@@ -34,13 +38,37 @@ class TaskCtrl
     @$scope.edited_task = null
     @$scope.original_task = null
 
-  updateTask: (task, field) =>
+  updatePosition: (event) =>
+    old_index = event.oldIndex
+    new_index = event.newIndex
+    task = @$scope.tasks_list[new_index]
+    task.position = new_index
+
+    this.updateTask(task, 'position',
+      success: () =>
+        this._reorder_list(old_index, new_index)
+      error: () =>
+        this._reverse_order(old_index, new_index)
+    )
+    
+  _reverse_order: (old_index, new_index) ->
+    console.log 'reversed'
+
+  _reorder_list: (old_index, new_index) ->
+    for index in [old_index..new_index]
+      @$scope.tasks_list[index].position = index
+    console.log 'reordered'
+
+  updateTask: (task, field, callback = {}) =>
     params = this._updateParams(task, field)
 
     @TaskResource.update(params)
-      .$promise.then (task) => 
+      .$promise.then (task) =>
+        callback.success() if callback.success
         @$scope.edited_task = null
       ,(error) =>
+        console.log callback
+        callback.error() if callback.error
         console.log 'error'
 
   destroyTask: (task) =>

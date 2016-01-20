@@ -4,7 +4,7 @@
     <div class="text"><input type="text" class="form-control" placeholder="Start typing here to create a task" ng-model="new_task.name"></div>
     <div class="add"><button class="btn btn-custom" type="button" ng-click="addTask(new_task)">Add task</button></div>
   </form>
-  <div class="task-list">
+  <div class="task-list" ng-sortable="sortable_options">
     <div class="task-container" ng-repeat="task in tasks_list" ng-class="{editing: task == edited_task}">
       <div class="task" ng-class="{complited: task.status}">
         <div class="status"><input type="checkbox" ng-model="task.status" ng-click="updateTask(task, 'status')"></div>

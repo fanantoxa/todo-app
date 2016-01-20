@@ -7,6 +7,8 @@
 #= require angular-ui-bootstrap
 #= require angular-ui-bootstrap-tpls
 #= require angular-rails-templates
+#= require sortable/Sortable.min
+#= require sortable/ng-sortable
 #= require angular-devise
 #= require angular-resource
 
