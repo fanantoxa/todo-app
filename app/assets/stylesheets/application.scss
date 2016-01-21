@@ -183,7 +183,8 @@ body {
       }
 
       .sign, .date {
-        flex: 0 0 40px;
+        flex: 0 0 auto;
+        padding: 0 5px 0 5px;
       }
 
       .add {

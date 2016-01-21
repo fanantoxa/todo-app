@@ -1,6 +1,8 @@
 class TaskCtrl
-  constructor: (@$scope, @$location, @Auth, @TaskResource) ->
+  constructor: (@$scope, @$location, @Auth, @TaskResource, @$filter) ->
     @$location.path '/' unless @Auth.isAuthenticated()
+
+    @$scope.new_task = {}
 
     @$scope.sortable_options= 
       animation: 150
@@ -87,6 +89,7 @@ class TaskCtrl
   _updateParams: (task, field) ->
     params = { id: task.id }
     params[field] = task[field]
+    params[field] = @$filter('date')(params[field], 'dd-MM-yyyy') if field == 'due_date'
     this._extandProjectId(params)
 
   _extandProjectId: (params) ->
@@ -98,5 +101,6 @@ angular.module 'Todo'
     '$location',
     'Auth',
     'TaskResource',
+    '$filter',
     TaskCtrl
   ]
