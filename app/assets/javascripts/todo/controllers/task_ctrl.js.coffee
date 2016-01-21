@@ -52,12 +52,19 @@ class TaskCtrl
     )
     
   _reverse_order: (old_index, new_index) ->
-    console.log 'reversed'
+    console.log "old_index: #{old_index}"
+    console.log "new_index: #{new_index}"
+    list = @$scope.tasks_list
+    list[new_index].position = old_index
+
+    list.sort (a, b) ->
+      return -1  if a.position < b.position
+      return 1 if a.position > b.position
+      return 0 
 
   _reorder_list: (old_index, new_index) ->
     for index in [old_index..new_index]
       @$scope.tasks_list[index].position = index
-    console.log 'reordered'
 
   updateTask: (task, field, callback = {}) =>
     params = this._updateParams(task, field)
