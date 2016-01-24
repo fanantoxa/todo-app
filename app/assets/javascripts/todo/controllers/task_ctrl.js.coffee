@@ -3,8 +3,9 @@ class TaskCtrl
     @$location.path '/' unless @Auth.isAuthenticated()
 
     @$scope.new_task = {}
+    @$scope.edited_task = null
 
-    @$scope.sortable_options= 
+    @$scope.sortable_options =
       animation: 150
       onUpdate: this.updatePosition
 
@@ -52,23 +53,12 @@ class TaskCtrl
       error: () =>
         this._reverse_order(old_index, new_index)
     )
-    
-  _reverse_order: (old_index, new_index) ->
-    console.log "old_index: #{old_index}"
-    console.log "new_index: #{new_index}"
-    list = @$scope.tasks_list
-    list[new_index].position = old_index
-
-    list.sort (a, b) ->
-      return -1  if a.position < b.position
-      return 1 if a.position > b.position
-      return 0 
-
-  _reorder_list: (old_index, new_index) ->
-    for index in [old_index..new_index]
-      @$scope.tasks_list[index].position = index
 
   updateTask: (task, field, callback = {}) =>
+    if (task[field] == @$scope.original_task[field])
+      @$scope.edited_task = null
+      return
+
     params = this._updateParams(task, field)
 
     @TaskResource.update(params)
@@ -76,9 +66,9 @@ class TaskCtrl
         callback.success() if callback.success
         @$scope.edited_task = null
       ,(error) =>
-        console.log callback
         callback.error() if callback.error
-        console.log 'error'
+        if field == 'name' || field == field
+          task[field] = @$scope.original_task[field]
 
   destroyTask: (task) =>
     @TaskResource.remove(this._extandProjectId({ id: task.id }))
@@ -94,6 +84,19 @@ class TaskCtrl
 
   _extandProjectId: (params) ->
     angular.extend({}, params, project_id: @$scope.projectId)
+
+  _reverse_order: (old_index, new_index) ->
+    list = @$scope.tasks_list
+    list[new_index].position = old_index
+
+    list.sort (a, b) ->
+      return -1  if a.position < b.position
+      return 1 if a.position > b.position
+      return 0 
+
+  _reorder_list: (old_index, new_index) ->
+    for index in [old_index..new_index]
+      @$scope.tasks_list[index].position = index
 
 angular.module 'Todo'
   .controller 'TaskCtrl', [
