@@ -25,7 +25,7 @@ describe 'Projects page.', features: true, js: true do
       @project_item = projects_page.list[0]
     end
 
-    scenario 'should be presented with already creadted projects' do
+    scenario 'should be presented with already creadted project' do
       expect(projects_page).to have_list count: 1
       expect(@project_item).to have_item_edit_btn
       expect(@project_item.item_name).to have_content @project.name
@@ -45,7 +45,7 @@ describe 'Projects page.', features: true, js: true do
 
   feature 'I want be able edit projects' do
     before do
-      @project_item = projects_page.list[0]
+      @project_item = projects_page.list.first
     end
 
     feature 'start editing' do
@@ -64,7 +64,6 @@ describe 'Projects page.', features: true, js: true do
 
     feature 'finish editing' do
       before do
-        @project_item = projects_page.list[0]
         @project_item.item_edit_btn.click
         @project_item.form_name.set 'sone another text'
       end
@@ -82,7 +81,6 @@ describe 'Projects page.', features: true, js: true do
 
     feature 'cancel editing' do
       before do
-        @project_item = projects_page.list[0]
         @project_item.item_edit_btn.click
         @project_item.form_name.set 'sone another text'
       end
@@ -91,7 +89,7 @@ describe 'Projects page.', features: true, js: true do
         expect(@project_item).to have_form_name
         expect(@project_item).to have_no_item
         @project_item.form_cancel_btn.click
-        @project_item = projects_page.list[0]
+        @project_item = projects_page.list.first
         expect(@project_item).to have_no_form_name
         expect(@project_item).to have_item
         expect(@project_item.item_name).to have_content @project.name
@@ -101,7 +99,7 @@ describe 'Projects page.', features: true, js: true do
         expect(@project_item).to have_form_name
         expect(@project_item).to have_no_item
         @project_item.form_name.send_keys :escape
-        @project_item = projects_page.list[0]
+        @project_item = projects_page.list.first
         expect(@project_item).to have_no_form_name
         expect(@project_item).to have_item
         expect(@project_item.item_name).to have_content @project.name
