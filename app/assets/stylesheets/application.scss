@@ -227,6 +227,12 @@ body {
 
         .task {
           display: flex;
+
+          &.complited {
+            .task-text, .date span {
+              text-decoration: line-through;
+            }
+          }
         }
 
         &.editing {
