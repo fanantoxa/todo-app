@@ -32,14 +32,14 @@ describe 'Tasks page.', features: true, js: true do
       expect(@first_project).to have_task_list count: 2, wait: 5
 
       expect(@first_task_item).to have_item_name
-      expect(@first_task_item.item_name).to have_content @task_1.name
+      expect(@first_task_item.item_name).to have_content @task_2.name
 
       expect(@first_task_item).to have_item_status
-      expect(@first_task_item.item_status.checked?).to eq @task_1.status
+      expect(@first_task_item.item_status.checked?).to eq @task_2.status
 
       expect(@first_task_item).to have_item_date
       expect(@first_task_item).to have_no_item_date_icon
-      expect(@first_task_item.item_date).to have_content @task_1.due_date.strftime('%d-%m-%Y')
+      expect(@first_task_item.item_date).to have_content @task_2.due_date.strftime('%d-%m-%Y')
 
       expect(@first_task_item).to have_item_edit_btn
       expect(@first_task_item).to have_item_delete_btn
@@ -109,7 +109,7 @@ describe 'Tasks page.', features: true, js: true do
           @first_task_item = @first_project.task_list.first
           expect(@first_task_item).to have_no_form_name
           expect(@first_task_item).to have_item
-          expect(@first_task_item.item_name).to have_content @task_1.name
+          expect(@first_task_item.item_name).to have_content @task_2.name
         end
 
         scenario 'with ESC key' do
@@ -119,35 +119,62 @@ describe 'Tasks page.', features: true, js: true do
           @first_task_item = @first_project.task_list.first
           expect(@first_task_item).to have_no_form_name
           expect(@first_task_item).to have_item
-          expect(@first_task_item.item_name).to have_content @task_1.name
+          expect(@first_task_item.item_name).to have_content @task_2.name
         end
       end
     end
 
     feature 'edit status' do
       before do
-        check @first_task_item.item_status
+        @first_task_item.item_status.set(true)
       end
       
-      xscenario 'set complited' do
+      scenario 'set complited' do
         expect(@first_task_item.item_status.checked?).to eq !@task_1.status
       end
 
-      xscenario 'unset complited' do
+      scenario 'unset complited' do
         expect(@first_task_item.item_status.checked?).to eq !@task_1.status
-        uncheck @first_task_item.item_status
+        @first_task_item.item_status.set(false)
         expect(@first_task_item.item_status.checked?).to eq @task_1.status
       end
     end
 
     feature 'due_date' do
-      scenario 'set date'
-      scenario 'clear date'
+      before do
+        @first_task_item.item_date.click
+      end
+
+      scenario 'set date' do
+        expect(@first_task_item).to have_item_datapicker
+        @first_task_item.item_datapicker_today.click
+        expect(@first_task_item.item_date).to have_content DateTime.now.strftime('%d-%m-%Y')
+      end
+
+      scenario 'clear date' do
+        expect(@first_task_item).to have_item_datapicker
+        @first_task_item.item_datapicker_clear.click
+        expect(@first_task_item).to have_no_item_date
+        expect(@first_task_item).to have_item_date_icon
+      end
     end
 
     feature 'edit position' do
-      scenario 'move task down'
-      scenario 'move task up'
+      before do
+        @last_task_item = @first_project.task_list.last
+      end
+
+      scenario 'move task down' do
+        @first_task_item.root_element.drag_to(@last_task_item.root_element)
+        expect(@first_project.task_list.first.item_name).to have_content @task_1.name
+        expect(@first_project.task_list.last.item_name).to have_content @task_2.name
+      end
+
+      scenario 'move task up' do
+        @last_task_item.root_element.drag_to(@first_task_item.root_element)
+        expect(@first_project.task_list.first.item_name).to have_content @task_1.name
+        expect(@first_project.task_list.last.item_name).to have_content @task_2.name
+      end
     end
   end
 

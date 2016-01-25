@@ -12,7 +12,7 @@
         <div class="date">
           <input type="text" the-datepicker uib-datepicker-popup="dd-MMMM-yyyy" ng-model="task.due_date" style="width: 0; height: 0; border: none;" is-open="task.datapickerOpened" ng-change="updateTask(task, 'due_date')">
           <span class="date-text" ng-click="openDatapicker(task)" ng-show="task.due_date">{{ task.due_date | date: 'dd-MM-yyyy' }}</span>
-          <span class="date-icon" ng-click="openDatapicker(task)" class="glyphicon glyphicon-calendar" aria-hidden="true" ng-hide="task.due_date"></span>
+          <span class="date-icon glyphicon glyphicon-calendar" ng-click="openDatapicker(task)" class="glyphicon glyphicon-calendar" aria-hidden="true" ng-hide="task.due_date"></span>
         </div>
         <div class="edit"><span class="glyphicon glyphicon-pencil" aria-hidden="true" ng-click="editTask(task)"></span></div>
         <div class="remove"><span class="glyphicon glyphicon-trash" aria-hidden="true" ng-click="destroyTask(task)"></span></div>
