@@ -12,15 +12,13 @@
             </h4>
             <form class="form" ng-submit="updateProject(project)">
               <span class="project-name">
-              <input ng-trim="false" ng-model="project.name" todo-escape="cancelEditing(project)" todo-focus="project == edited_project">
+              <input type="text" ng-trim="false" ng-model="project.name" todo-escape="cancelEditing(project)" todo-focus="project == edited_project">
               </span>
               <span class="glyphicon glyphicon-ok apply" aria-hidden="true" ng-click="updateProject(project)"></span>
               <span class="glyphicon glyphicon-remove cancel" aria-hidden="true" ng-click="cancelEditing(project)"></span>
             </form>
           </div>
-          <div class="panel-body tasks">
-
-          </div>
+          <task project-id="project.id"></task>
         </div>
       </div>
     </div>
@@ -30,7 +28,7 @@
       <div class="panel panel-custom">
         <div class="panel-heading">
           <h4>
-            <form novalidate >
+            <form novalidate>
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="Start typing here project name" ng-model="new_project.name">
                 <span class="input-group-btn">

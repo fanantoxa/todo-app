@@ -39,7 +39,7 @@ class ProjectCtrl
       .$promise.then (project) => 
         @$scope.edited_project = null
       ,(error) =>
-        project.name = @$scope.original_project.name        
+        project.name = @$scope.original_project.name
 
   destroyProject: (project) =>
     @ProjectResource.remove({ id: project.id })

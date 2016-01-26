@@ -26,7 +26,7 @@ RSpec.describe TasksController, type: :controller do
 
     it 'should create new task with due date' do
       post :create, project_id: @task.project.id, name: 'new task',
-        due_date: Time.new ,format: :json
+        due_date: Date.new.to_s ,format: :json
       expect(response).to have_http_status(:created)
     end
 
@@ -51,10 +51,10 @@ RSpec.describe TasksController, type: :controller do
     end
 
     it 'should update due_date of existing task' do
-      time = DateTime.now.utc.to_s
+      time = Date.new.to_s
       put :update, project_id: @task.project.id, id: @task.id, due_date: time, format: :json
       expect(response).to have_http_status(:ok)
-      expect(DateTime.parse(JSON.parse(response.body)['due_date']).utc).to eq(time)
+      expect(Date.parse(JSON.parse(response.body)['due_date']).to_s).to eq(time)
     end
 
     it 'should update position of existing task' do

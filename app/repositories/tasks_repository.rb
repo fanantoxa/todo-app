@@ -15,12 +15,14 @@ class TasksRepository < BaseRepository
   end
 
   def create_item
+    @params['due_date'] = Date.parse(@params['due_date']) if @params['due_date']
     new_task = Task.new(prepared_params)
     status = new_task.valid? && new_task.save
     [status, new_task]
   end
 
   def update_item
+    @params['due_date'] = Date.parse(@params['due_date']) if @params['due_date']
     task = @project.tasks.find(@params['id'])
 
     action = @params['position'] && :update_position || :update_field

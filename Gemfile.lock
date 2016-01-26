@@ -44,6 +44,7 @@ GEM
       railties (>= 3.1)
       sprockets (~> 2)
       tilt
+    angular-ui-bootstrap-rails (0.14.3)
     angular-ui-router-rails (0.2.15)
     angular_rails_csrf (1.0.4)
       rails (>= 3, < 5)
@@ -60,6 +61,7 @@ GEM
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bower-rails (0.10.0)
     builder (3.2.2)
     byebug (8.2.1)
     capybara (2.5.0)
@@ -296,11 +298,13 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   angular-rails-templates
+  angular-ui-bootstrap-rails
   angular-ui-router-rails
   angular_rails_csrf
   angularjs-rails
   better_errors
   bootstrap-sass (~> 3.3.6)
+  bower-rails (~> 0.10.0)
   capybara-rails
   carrierwave
   coffee-rails (~> 4.1.0)

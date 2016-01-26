@@ -1,0 +1,29 @@
+<div class="panel-body tasks">
+  <form class="task-form" ng-submit="addTask(new_task)">
+    <div class="sign"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></div>
+    <div class="text"><input type="text" class="form-control" placeholder="Start typing here to create a task" ng-model="new_task.name"></div>
+    <div class="add"><button class="btn btn-custom" type="button" ng-click="addTask(new_task)">Add task</button></div>
+  </form>
+  <div class="task-list" ng-sortable="sortable_options">
+    <div class="task-container" ng-repeat="task in tasks_list" ng-class="{editing: task == edited_task}">
+      <div class="task" ng-class="{complited: task.status}">
+        <div class="status"><input type="checkbox" ng-model="task.status" ng-click="updateTask(task, 'status')"></div>
+        <div class="task-text" ng-dblclick="editTask(task)">{{ task.name }}</div>
+        <div class="date">
+          <input type="text" the-datepicker uib-datepicker-popup="dd-MMMM-yyyy" ng-model="task.due_date" style="width: 0; height: 0; border: none;" is-open="task.datapickerOpened" ng-change="updateTask(task, 'due_date')">
+          <span class="date-text" ng-click="openDatapicker(task)" ng-show="task.due_date">{{ task.due_date | date: 'dd-MM-yyyy' }}</span>
+          <span class="date-icon glyphicon glyphicon-calendar" ng-click="openDatapicker(task)" class="glyphicon glyphicon-calendar" aria-hidden="true" ng-hide="task.due_date"></span>
+        </div>
+        <div class="edit"><span class="glyphicon glyphicon-pencil" aria-hidden="true" ng-click="editTask(task)"></span></div>
+        <div class="remove"><span class="glyphicon glyphicon-trash" aria-hidden="true" ng-click="destroyTask(task)"></span></div>
+        <div class="comments"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></div>
+      </div>
+      <from ng-submit="updateTask(task, 'name')" class="form">
+        <div class="task-text"><input type="text" ng-model="task.name" todo-escape="cancelEditingTask(task)" todo-focus="task == edited_task" ng-keydown="$event.which === 13 && updateTask(task, 'name')"></div>
+        <div class="apply"><span class="glyphicon glyphicon-ok" aria-hidden="true" ng-click="updateTask(task, 'name')"></span></div>
+        <div class="cancel"><span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="cancelEditingTask(task)"></span></div>
+      </from>
+      <comments task-id="task.id"></comments>
+    </div>
+  </div>
+</div>

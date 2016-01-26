@@ -12,7 +12,7 @@ class TodoConfig
       .state 'projects',
         url: '/projects'
         controller: 'ProjectCtrl'
-        templateUrl: 'project/main.html'
+        templateUrl: 'project/template.html'
       .state 'login',
         url: '/login'
         controller:  'LoginCtrl'
@@ -22,7 +22,14 @@ class TodoConfig
         controller:  'RegistrationCtrl'
         templateUrl: 'auth/registration.html'  
 
-angular.module 'Todo', ['ui.router', 'templates', 'Devise', 'ngResource']
+angular.module 'Todo', [
+  'ui.bootstrap',
+  'ui.router',
+  'templates',
+  'ng-sortable',
+  'Devise',
+  'ngResource'
+]
 
 angular.module 'Todo'
   .config ['$stateProvider', '$urlRouterProvider', '$httpProvider', TodoConfig ]  

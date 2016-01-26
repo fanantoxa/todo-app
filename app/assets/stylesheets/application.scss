@@ -87,7 +87,7 @@ body {
       border-radius: 0px;
       color: $main-color-light;
       
-      > form {
+      .form {
         display: none;
         margin: 10px 0 5px 0;
 
@@ -105,7 +105,7 @@ body {
           display: none;
         }
 
-        > form {
+        .form {
           display: flex;
         }
       }
@@ -166,6 +166,12 @@ body {
   .tasks {
     padding: 0;
 
+    .task-form, .task-list {
+      .date, .edit, .remove, .apply, .cancel, .comments {
+        cursor: pointer;
+      }
+    }
+
     .task-form {
       display: flex;
       flex-direction: row;
@@ -177,7 +183,8 @@ body {
       }
 
       .sign, .date {
-        flex: 0 0 40px;
+        flex: 0 0 auto;
+        padding: 0 5px 0 5px;
       }
 
       .add {
@@ -194,9 +201,51 @@ body {
         &:nth-of-type(even) {
           background-color: $main-color-light;
         }
-        
+
+        .date {
+          .gone {
+            color: red;
+          }
+
+          .future {
+            color: green;
+          }
+        }
+
+        .form {
+          display: none;
+
+          input {
+            outline: none;
+            border: none;
+            background-color: transparent;
+            border-bottom: 1px solid #000000;
+            display: block;
+            width: 100%;
+          }
+        }
+
         .task {
           display: flex;
+
+          &.complited {
+            .task-text, .date span {
+              text-decoration: line-through;
+            }
+          }
+        }
+
+        &.editing {
+          .task {
+            display: none;
+          }
+
+          .form {
+            display: flex;
+          }
+        }
+        
+        .task, .form {
           flex-direction: row;
           
           > div {

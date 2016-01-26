@@ -15,12 +15,14 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'therubyracer', platforms: :ruby
 gem 'sprockets', '2.12.3'
+gem 'bower-rails', "~> 0.10.0"
 
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'angularjs-rails'
 gem 'angular-rails-templates'
 gem 'angular-ui-router-rails'
+gem 'angular-ui-bootstrap-rails'
 
 source "https://rails-assets.org" do
   gem "rails-assets-angular-devise"
