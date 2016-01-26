@@ -8,10 +8,11 @@ RSpec.describe TasksRepository do
   let(:projects)     { double(find: project) }
   let(:current_user) { double( projects: projects)}
 
+  let(:due_date) { Date.new}
   let(:permit_params) { double(merge: 'params') }
   let(:params) {{
     'project_id' => 1, 'id' => 3, 'position' => 3,
-    'name' => 'na', 'due_date' => 23, 'status' => true
+    'name' => 'na', 'due_date' => due_date.to_s, 'status' => true
     }}
   let(:repository) { TasksRepository.new(current_user, params) }
   let(:task_model) { double(valid?: true, save: true) }
@@ -39,7 +40,7 @@ RSpec.describe TasksRepository do
       expect(Task).to have_received(:new).with({
         "position" => 3,
         "name" => "na",
-        "due_date" => 23,
+        "due_date" => due_date,
         "status" => true,
         project: project
       })

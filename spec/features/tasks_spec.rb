@@ -164,12 +164,6 @@ describe 'Tasks page.', features: true, js: true do
         @last_task_item = @first_project.task_list.last
       end
 
-      scenario 'move task down' do
-        @first_task_item.root_element.drag_to(@last_task_item.root_element)
-        expect(@first_project.task_list.first.item_name).to have_content @task_1.name
-        expect(@first_project.task_list.last.item_name).to have_content @task_2.name
-      end
-
       scenario 'move task up' do
         @last_task_item.root_element.drag_to(@first_task_item.root_element)
         expect(@first_project.task_list.first.item_name).to have_content @task_1.name
