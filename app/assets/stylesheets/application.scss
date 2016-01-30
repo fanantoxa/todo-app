@@ -167,7 +167,7 @@ body {
     padding: 0;
 
     .task-form, .task-list {
-      .date, .edit, .remove, .apply, .cancel, .comments {
+      .date, .edit, .remove, .apply, .cancel, .comments-icon {
         cursor: pointer;
       }
     }
@@ -271,7 +271,7 @@ body {
       .comments {
         padding: 0 8px 0 8px;
         
-        .commens-list {
+        .comments-list {
           .comment {
             margin-bottom: 5px;
             
