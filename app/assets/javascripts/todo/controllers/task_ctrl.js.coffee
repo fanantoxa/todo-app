@@ -55,7 +55,7 @@ class TaskCtrl
     )
 
   updateTask: (task, field, callback = {}) =>
-    if (task[field] == @$scope.original_task[field])
+    if @$scope.original_task && (task[field] == @$scope.original_task[field])
       @$scope.edited_task = null
       return
 
@@ -67,7 +67,7 @@ class TaskCtrl
         @$scope.edited_task = null
       ,(error) =>
         callback.error() if callback.error
-        if field == 'name' || field == field
+        if @$scope.original_task && (field == 'name' || field == field)
           task[field] = @$scope.original_task[field]
 
   destroyTask: (task) =>
