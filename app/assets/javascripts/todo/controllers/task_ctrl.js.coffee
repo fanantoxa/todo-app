@@ -6,7 +6,6 @@ class TaskCtrl
     @$scope.edited_task = null
     @$scope.sortable_options =
       animation: 150
-      handle: '.task'
       onUpdate: this.updatePosition
 
     @$scope.tasks_list = @TaskResource.query(project_id: @$scope.projectId)
