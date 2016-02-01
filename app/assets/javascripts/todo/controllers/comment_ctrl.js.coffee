@@ -12,7 +12,7 @@ class CommentCtrl
     params = this._extandIds(new_comment)
     @CommentResource.save(params)
       .$promise.then (comment) =>
-          @$scope.comments_list.unshift comment
+          @$scope.comments_list.push comment
           @$scope.new_comment = {}
       , (error) =>
         console.log 'error'

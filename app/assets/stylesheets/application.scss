@@ -199,7 +199,9 @@ body {
     .task-list {
       .task-container {
         &:nth-of-type(even) {
-          background-color: $main-color-light;
+          .task {
+            background-color: $main-color-light;
+          }
         }
 
         .date {
@@ -269,14 +271,14 @@ body {
       }
       
       .comments {
-        padding: 0 8px 0 8px;
+        padding: 8px;
         
         .comments-list {
           .comment {
             margin-bottom: 5px;
             
             .comment-body {
-              
+
             }
             
             .comment-files ul {
@@ -291,10 +293,12 @@ body {
           }
           
           .comment-form {
-            padding-bottom: 8px;
-            
             textarea {
               resize: none;
+            }
+
+            .form-group {
+              margin-bottom: 8px;
             }
 
             .attached-files ul {

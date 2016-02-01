@@ -1,6 +1,6 @@
 <div class="comments">
   <div class="comments-list">
-    <div ng-repeat="comment in comments_list" class="comment alert alert-info alert-dismissible">
+    <div ng-repeat="comment in comments_list | orderBy:'+id'" class="comment alert alert-info alert-dismissible">
       <button ng-click="destroyComment(comment)" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <div class="comment-body">
         <p>{{ comment.text }}</p>
