@@ -12,7 +12,7 @@ module Todo
 
     element :item_edit_btn,     '.task .edit span'
     element :item_delete_btn,   '.task .remove span'
-    element :item_comments_btn, '.task .comments span'
+    element :item_comments_btn, '.task .comments-icon span'
 
 
     element :from,            '.form'
