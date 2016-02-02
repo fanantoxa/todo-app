@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :projects, only: [:index, :create, :update, :destroy] do
     resources :tasks, only: [:index, :create, :update, :destroy] do
-      resources :comments, only: [:index, :create, :destroy]
-      resources :attachments, only: [:index, :create, :destroy]
+      resources :comments, only: [:index, :create, :destroy] do
+        resources :attachments, only: [:index, :create, :destroy]
+      end
     end
   end
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)

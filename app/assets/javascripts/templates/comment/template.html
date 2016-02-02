@@ -5,8 +5,7 @@
       <div class="comment-body">
         <p>{{ comment.text }}</p>
       </div>
-      <div class="comment-files">
-      </div>
+      <attachments project-id="projectId" task-id="taskId" comment-id="comment.id"></attachments>
     </div>
     <div class="comment-form">
       <form>
@@ -14,10 +13,7 @@
           <textarea ng-model="new_comment.text" class="form-control" rows="3" placeholder="Start typing here to add a comment"></textarea>
         </div>
         <div class="form-group">
-          <!-- <button type="submit" class="btn btn-custom">Attach file</button> -->
           <button ng-click="addComment(new_comment)" type="submit" class="btn btn-custom">Add comment</button>
-        </div>
-        <div class="attached-files">
         </div>
       </form>
     </div>
