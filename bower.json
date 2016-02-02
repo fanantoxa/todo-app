@@ -9,7 +9,8 @@
   "vendor": {
     "name": "bower-rails generated vendor assets",
     "dependencies": {
-      "sortable": "git@github.com:RubaXa/Sortable.git"
+      "sortable": "git@github.com:RubaXa/Sortable.git",
+      "ng-file-upload": ""
     }
   }
 }
