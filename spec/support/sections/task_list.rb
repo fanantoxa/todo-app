@@ -1,3 +1,6 @@
+require_relative 'comment_list'
+require_relative 'comment_form'
+
 module Todo
   class TaskListSection < SitePrism::Section
     element :item,              '.task'
@@ -12,12 +15,15 @@ module Todo
 
     element :item_edit_btn,     '.task .edit span'
     element :item_delete_btn,   '.task .remove span'
-    element :item_comments_btn, '.task .comments span'
+    element :item_comments_btn, '.task .comments-icon span'
 
 
     element :from,            '.form'
     element :form_name,       '.form .task-text input'
     element :form_apply_btn,  '.form .apply span'
     element :form_cancel_btn, '.form .cancel span'
+
+    section :comment_form, CommentFormSection, '.comments .comment-form'
+    sections :comment_list, CommentListSection, '.comments .comment'
   end
 end

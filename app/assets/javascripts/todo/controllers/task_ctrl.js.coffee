@@ -4,7 +4,6 @@ class TaskCtrl
 
     @$scope.new_task = {}
     @$scope.edited_task = null
-
     @$scope.sortable_options =
       animation: 150
       onUpdate: this.updatePosition
@@ -13,6 +12,7 @@ class TaskCtrl
 
     @$scope.openDatapicker = this.openDatapicker
 
+    @$scope.toggleComments = this.toggleComments
     @$scope.addTask = this.addTask
     @$scope.editTask = this.editTask
     @$scope.cancelEditingTask = this.cancelEditingTask
@@ -21,6 +21,9 @@ class TaskCtrl
 
   openDatapicker: (task) =>
     task.datapickerOpened = true
+
+  toggleComments: (task)=>
+    task.show_comments = !task.show_comments
 
   addTask: (new_task) =>
     params = this._extandProjectId(new_task)

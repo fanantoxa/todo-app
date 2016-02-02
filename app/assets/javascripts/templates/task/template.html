@@ -16,14 +16,14 @@
         </div>
         <div class="edit"><span class="glyphicon glyphicon-pencil" aria-hidden="true" ng-click="editTask(task)"></span></div>
         <div class="remove"><span class="glyphicon glyphicon-trash" aria-hidden="true" ng-click="destroyTask(task)"></span></div>
-        <div class="comments"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></div>
+        <div class="comments-icon"><span class="glyphicon glyphicon-comment" aria-hidden="true" ng-click="toggleComments(task)"></span></div>
       </div>
       <from ng-submit="updateTask(task, 'name')" class="form">
         <div class="task-text"><input type="text" ng-model="task.name" todo-escape="cancelEditingTask(task)" todo-focus="task == edited_task" ng-keydown="$event.which === 13 && updateTask(task, 'name')"></div>
         <div class="apply"><span class="glyphicon glyphicon-ok" aria-hidden="true" ng-click="updateTask(task, 'name')"></span></div>
         <div class="cancel"><span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="cancelEditingTask(task)"></span></div>
       </from>
-      <comments task-id="task.id"></comments>
+      <comments ng-show="task.show_comments" project-id="projectId" task-id="task.id"></comments>
     </div>
   </div>
 </div>
