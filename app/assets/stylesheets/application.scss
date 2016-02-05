@@ -281,13 +281,32 @@ body {
 
             }
             
-            .comment-files ul {
-              margin-bottom: 0px;
-              list-style-type: none;
-              padding-left: 10px;
-              
-              .comment-file {
-                font-size: 12px;
+            .comment-files  {
+              position: relative;
+
+              ul {
+                margin-bottom: 0px;
+                list-style-type: none;
+                padding-left: 10px;
+
+                .comment-file {
+                  font-size: 12px;
+                }
+              }
+
+              .attach-form {
+                position: absolute;
+                right: -20px;
+                bottom: -8px;
+
+                a {
+                  cursor: pointer;
+                }
+
+                .progress {
+                  margin-bottom: 0px;
+                  height: 8px;
+                }
               }
             }
           }
@@ -308,6 +327,10 @@ body {
 
               .attached-file {
                 font-size: 12px;
+
+                a {
+                  cursor: pointer;
+                }
               }
             }
           }

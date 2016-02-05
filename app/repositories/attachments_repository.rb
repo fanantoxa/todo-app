@@ -17,7 +17,8 @@ class AttachmentsRepository < BaseRepository
   def create_item
     attachment = Attachment.new(
       file: @params['file'],
-      name: @params['file'].original_filename
+      name: @params['file'].original_filename,
+      comment: @comment
     )
     status = attachment.save
     [status, attachment]

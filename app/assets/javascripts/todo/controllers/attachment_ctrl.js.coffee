@@ -4,9 +4,10 @@ class AttachmentCtrl
 
     @$scope.attachments_list = @AttachmentResource.query(this._extandIds({}))
 
-    @$scope.uploadFiles = this.uploadFiles
+    @$scope.uploadAttachments = this.uploadAttachments
+    @$scope.destroyAttachment = this.destroyAttachment
 
-  uploadFiles: (files, invalid_files) =>
+  uploadAttachments: (files, invalid_files) =>
     @$scope.files = files
     @$scope.invalid_files = invalid_files
     angular.forEach files, (file) =>
@@ -18,11 +19,21 @@ class AttachmentCtrl
       file.upload.then (response) =>
         @$timeout () =>
           file.result = response.data
+          @$scope.attachments_list.push file.result
       , (response) =>
         if (response.status > 0)
-          @$scope.errorMsg = response.status + ': ' + response.data
+          @$scope.error_msg = response.status + ': ' + response.data
       , (evt) =>
         file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total))
+
+      file.upload.finally () =>
+        @$scope.files = null
+
+  destroyAttachment: (attachment) =>
+    @AttachmentResource.remove(this._extandIds({ id: attachment.id }))
+      .$promise.then (result) =>
+        index = @$scope.attachments_list.indexOf(attachment)
+        @$scope.attachments_list.splice(index, 1)
 
   _extandIds: (params) ->
     angular.extend({}, params,
