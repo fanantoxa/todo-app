@@ -69,7 +69,7 @@ describe 'CommentCtrl', ->
         expect(console.log).toHaveBeenCalledWith 'error'
 
     describe '#destroyComment', ->
-      it 'should destroy project', ->
+      it 'should destroy comment', ->
         @$scope.destroyComment @comment
         expect(@$scope.comments_list.indexOf(@comment)).toEqual -1
 
