@@ -38,7 +38,7 @@ RSpec.describe AttachmentsRepository do
   describe '#create_item' do
     it 'should create comment' do
       expect(repository.create_item).to eq([true, attachment_model])
-      expect(Attachment).to have_received(:new).with({file: file, name: 'some name'})
+      expect(Attachment).to have_received(:new).with({file: file, name: 'some name', comment: comment})
     end
   end
 end
