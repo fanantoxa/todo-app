@@ -26,4 +26,41 @@ describe 'Attachments section. ', features: true, js: true do
       expect(@first_comment.attachment_form).to have_upload_link
     end
   end
+
+  feature 'I want be able to see already attached files' do
+    before do
+      @first_attachment = @first_comment.attachment_list.first
+    end
+
+    scenario 'should be presented with already attached files' do
+      expect(@first_comment).to have_attachment_list count: 1, wait: 5
+
+      expect(@first_attachment).to have_file_link
+      expect(@first_attachment.file_link).to have_content @attachment.name
+      expect(@first_attachment.file_link['href']).to have_content @attachment[:file]
+
+      expect(@first_attachment).to have_remove_btn
+    end
+  end
+
+  feature 'I want be able add comments' do
+    let(:new_attachment) { FactoryGirl.build :attachment }
+
+    scenario 'successful' do
+      
+      # @first_comment.attachment_form.upload_link.click
+      @first_comment.attachment_form.upload_link.set new_attachment.file.path
+      # attach_file @first_comment.attachment_form.upload_link, new_attachment.file.path, :visible => false
+      expect(@first_comment).to have_attachment_list count: 2, wait: 2
+    end
+
+    scenario 'with error'
+  end
+
+  feature 'I want be able remove attached files' do
+    scenario 'successful' do
+      @first_comment.attachment_list.first.remove_btn.click
+      expect(@first_comment).to have_attachment_list count: 0, wait: 5
+    end
+  end
 end
