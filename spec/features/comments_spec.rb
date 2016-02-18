@@ -1,6 +1,6 @@
 require 'features_helper'
 
-describe 'Comment page.', features: true, js: true do
+describe 'Comment section. ', features: true, js: true do
   let(:login_page) { Todo::LoginPage.new }
   let(:projects_page) { Todo::ProjectsPage.new }
   let(:user) { FactoryGirl.create :user }

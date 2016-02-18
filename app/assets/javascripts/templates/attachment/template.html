@@ -1,6 +1,6 @@
 <div class="comment-files">
   <div class="attach-form">
-    <a multiple ngf-select="uploadAttachments($files, $invalid_files)" ngf-max-size="20MB" >
+    <a class="upload_link" multiple ngf-select="uploadAttachments($files, $invalid_files)" ngf-max-size="20MB" >
     <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
     Attach file
     </a>
@@ -13,8 +13,8 @@
   <ul>
     <li class="attached-file" ng-repeat="attachment in attachments_list">
       <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-      <a target="_self" href="{{attachment.file.url}}" download="{{attachment.name}}" href="">{{attachment.name}}</a>
-      <a ng-click="destroyAttachment(attachment)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+      <a class="file_link" target="_self" href="{{attachment.file.url}}" download="{{attachment.name}}" href="">{{attachment.name}}</a>
+      <a class="remove_btn" ng-click="destroyAttachment(attachment)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
     </li>
   </ul>
 </div>
