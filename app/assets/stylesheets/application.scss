@@ -298,9 +298,29 @@ body {
                 position: absolute;
                 right: -20px;
                 bottom: -8px;
-
-                a {
+                
+                .upload_link_container {
+                  position: relative;
+                  overflow: hidden;
                   cursor: pointer;
+
+                  &:hover {
+                    text-decoration: underline;
+                  }
+
+                  .upload_link {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 100%;
+                    text-align: right;
+                    filter: alpha(opacity=0);
+                    opacity: 0;
+                    outline: none;
+                    background: white;
+                    cursor: inherit;
+                    display: block;
+                  }
                 }
 
                 .progress {

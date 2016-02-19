@@ -1,9 +1,10 @@
 <div class="comment-files">
   <div class="attach-form">
-    <a class="upload_link" multiple ngf-select="uploadAttachments($files, $invalid_files)" ngf-max-size="20MB" >
-    <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
-    Attach file
-    </a>
+    <span class="upload_link_container">
+        <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
+        Attach file
+        <input type="file" class="upload_link" multiple ngf-select="uploadAttachments($files, $invalid_files)" ngf-max-size="20MB" >
+    </span>
     <div class="progress" ng-repeat="f in files">
       <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:{{f.progress}}%;" >
         <span ng-bind="f.progress + '%'" class="sr-only"></span>

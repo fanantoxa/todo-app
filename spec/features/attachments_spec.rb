@@ -47,10 +47,8 @@ describe 'Attachments section. ', features: true, js: true do
     let(:new_attachment) { FactoryGirl.build :attachment }
 
     scenario 'successful' do
-      
-      # @first_comment.attachment_form.upload_link.click
-      @first_comment.attachment_form.upload_link.set new_attachment.file.path
-      # attach_file @first_comment.attachment_form.upload_link, new_attachment.file.path, :visible => false
+      page.evaluate_script("$('input[type=\"file\"]').css('opacity', 1);")
+      @first_comment.attachment_form.upload_input.set new_attachment.file.path
       expect(@first_comment).to have_attachment_list count: 2, wait: 2
     end
 
