@@ -281,13 +281,52 @@ body {
 
             }
             
-            .comment-files ul {
-              margin-bottom: 0px;
-              list-style-type: none;
-              padding-left: 10px;
-              
-              .comment-file {
-                font-size: 12px;
+            .comment-files  {
+              position: relative;
+
+              ul {
+                margin-bottom: 0px;
+                list-style-type: none;
+                padding-left: 10px;
+
+                .comment-file {
+                  font-size: 12px;
+                }
+              }
+
+              .attach-form {
+                position: absolute;
+                right: -20px;
+                bottom: -8px;
+                
+                .upload_link_container {
+                  position: relative;
+                  overflow: hidden;
+                  cursor: pointer;
+
+                  &:hover {
+                    text-decoration: underline;
+                  }
+
+                  .upload_link {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 100%;
+                    text-align: right;
+                    filter: alpha(opacity=0);
+                    opacity: 0;
+                    outline: none;
+                    background: white;
+                    cursor: inherit;
+                    display: block;
+                  }
+                }
+
+                .progress {
+                  margin-bottom: 0px;
+                  height: 8px;
+                }
               }
             }
           }
@@ -308,6 +347,10 @@ body {
 
               .attached-file {
                 font-size: 12px;
+
+                a {
+                  cursor: pointer;
+                }
               }
             }
           }

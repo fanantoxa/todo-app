@@ -1,6 +1,6 @@
 require 'features_helper'
 
-describe 'Tasks page.', features: true, js: true do
+describe 'Tasks section. ', features: true, js: true do
   let(:login_page) { Todo::LoginPage.new }
   let(:projects_page) { Todo::ProjectsPage.new }
   let(:user) { FactoryGirl.create :user }

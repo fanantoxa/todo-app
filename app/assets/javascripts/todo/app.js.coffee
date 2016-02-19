@@ -28,6 +28,7 @@ angular.module 'Todo', [
   'templates',
   'ng-sortable',
   'Devise',
+  'ngFileUpload',
   'ngResource'
 ]
 

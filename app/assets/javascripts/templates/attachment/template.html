@@ -1,0 +1,22 @@
+<div class="comment-files">
+  <div class="attach-form">
+    <span class="upload_link_container">
+        <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
+        Attach file
+        <input type="file" class="upload_link" multiple ngf-select="uploadAttachments($files, $invalid_files)" ngf-max-size="20MB" >
+    </span>
+    <div class="progress" ng-repeat="f in files">
+      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:{{f.progress}}%;" >
+        <span ng-bind="f.progress + '%'" class="sr-only"></span>
+      </div>
+    </div>
+  </div>
+  <ul>
+    <li class="attached-file" ng-repeat="attachment in attachments_list">
+      <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+      <a class="file_link" target="_self" href="{{attachment.file.url}}" download="{{attachment.name}}" href="">{{attachment.name}}</a>
+      <a class="remove_btn" ng-click="destroyAttachment(attachment)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+    </li>
+  </ul>
+</div>
+

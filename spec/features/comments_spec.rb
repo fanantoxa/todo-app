@@ -1,6 +1,6 @@
 require 'features_helper'
 
-describe 'Comment page.', features: true, js: true do
+describe 'Comment section. ', features: true, js: true do
   let(:login_page) { Todo::LoginPage.new }
   let(:projects_page) { Todo::ProjectsPage.new }
   let(:user) { FactoryGirl.create :user }
@@ -24,7 +24,7 @@ describe 'Comment page.', features: true, js: true do
     end
   end
 
-  feature 'I want be able to see already created commentss' do
+  feature 'I want be able to see already created comments' do
     before do
       @first_comment_item = @first_task.comment_list.first
     end

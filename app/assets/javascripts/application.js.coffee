@@ -8,6 +8,7 @@
 #= require angular-ui-bootstrap-tpls
 #= require angular-rails-templates
 #= require sortable/Sortable.min
+#= require ng-file-upload/ng-file-upload.min
 #= require sortable/ng-sortable
 #= require angular-devise
 #= require angular-resource
